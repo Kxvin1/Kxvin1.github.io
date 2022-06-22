@@ -11819,3 +11819,8 @@ section.resume-section .resume-section-content {
 .fa-ul {
   font-size: 1.2em;
 }
+
+img {
+  max-width: 70em;
+  margin-bottom: 2em;
+}
