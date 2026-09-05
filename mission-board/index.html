@@ -56,6 +56,12 @@ ul.done .tick{color:var(--green);font-weight:700}
 ul.done time{margin-left:auto;color:var(--dim);font-size:11.5px}
 footer{margin:38px auto 0;color:var(--dim);font-size:12px;border-top:1px solid var(--line);padding-top:13px;max-width:1240px}
 footer b{color:var(--dim)}
+.info{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--dim);color:var(--dim);font:600 10px/1 ui-monospace,Consolas,monospace;text-transform:none;letter-spacing:0;cursor:help;position:relative;vertical-align:middle;outline:none}
+.info:hover,.info:focus{color:var(--cyan);border-color:var(--cyan)}
+.info::after{content:attr(data-tip);position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);width:max-content;max-width:300px;background:#0f1b2a;color:var(--fg);border:1px solid var(--cyan);border-radius:8px;padding:8px 11px;font:400 12.5px/1.45 "Segoe UI",system-ui,sans-serif;text-transform:none;letter-spacing:0;white-space:normal;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .12s;z-index:20}
+.info:hover::after,.info:focus::after{opacity:1}
+.stat .info{position:relative;margin-left:6px;width:13px;height:13px;font-size:9px;top:-1px}
+.stat .info::after{left:auto;right:-8px;transform:none}
 @media (max-width:640px){body{padding:20px 14px 50px} .stats{margin-left:0}}
 </style></head><body>
 <a href="/" style="position:fixed;top:0;left:0;z-index:99;margin:14px;padding:7px 12px;font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;text-decoration:none;backdrop-filter:blur(6px)">&larr; Kevin Bartolome</a>
@@ -65,15 +71,15 @@ footer b{color:var(--dim)}
 <h1>Mission Board<small>Every test in the current round, and whose turn it is. Read only. The terminal board
 stays the control surface; this is the view.</small></h1>
 <div class="stats">
-<div class="stat ok"><b>9</b><span>passed</span></div>
-<div class="stat warn"><b>6</b><span>active</span></div>
-<div class="stat bug"><b>1</b><span>product bugs</span></div>
-<div class="stat"><b>19</b><span>in round</span></div>
+<div class="stat ok"><b>9</b><span>passed</span><span class="info" tabindex="0" data-tip="Signed off on the platform by the human-run check, the final word for every test." aria-label="Signed off on the platform by the human-run check, the final word for every test.">i</span></div>
+<div class="stat warn"><b>6</b><span>active</span><span class="info" tabindex="0" data-tip="Tests somewhere between investigating and proven: the agent or the person still owns a step." aria-label="Tests somewhere between investigating and proven: the agent or the person still owns a step.">i</span></div>
+<div class="stat bug"><b>1</b><span>product bugs</span><span class="info" tabindex="0" data-tip="Tests that are correct but blocked on a real defect in the product, filed with the product team." aria-label="Tests that are correct but blocked on a real defect in the product, filed with the product team.">i</span></div>
+<div class="stat"><b>19</b><span>in round</span><span class="info" tabindex="0" data-tip="Every test handed over in this round, whatever its state." aria-label="Every test handed over in this round, whatever its state.">i</span></div>
 </div>
 </header>
 <div class="bar"><span><b style="color:var(--green)">47%</b> of the round signed off</span>
 <span class="meter"><i></i></span></div>
-<section class="lane empty"><h2>🔁 Needs re-run <span class="n">0</span></h2><p class="none">Nothing at this stage.</p></section><section class="lane l-rerun"><h2>♻ Passed on re-run <span class="n">2</span></h2>
+<section class="lane empty"><h2>🔁 Needs re-run <span class="n">0</span><span class="info" tabindex="0" data-tip="Diagnosed. No code change needed, just a reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass." aria-label="Diagnosed. No code change needed, just a reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass.">i</span></h2><p class="none">Nothing at this stage.</p></section><section class="lane l-rerun"><h2>♻ Passed on re-run <span class="n">2</span><span class="info" tabindex="0" data-tip="No code change needed. Reattempt them. Reattempted with no code change and passed. Nothing to fix." aria-label="No code change needed. Reattempt them. Reattempted with no code change and passed. Nothing to fix.">i</span></h2>
 <p class="sub">No code change needed. Reattempt them.</p><div class="cards"><article class="card s-passed-on-rerun ">
   <header><span class="fl-name">chk-04</span><span class="grp">tests/checkout</span>
   <span class="age ">36m ago</span></header>
@@ -90,7 +96,7 @@ stays the control surface; this is the view.</small></h1>
   
   
   <div class="f runs"><span class="fl">runs</span><span class="fv">re-run 1x green</span></div>
-</article></div></section><section class="lane l-plat"><h2>🛰 Passed on platform <span class="n">1</span></h2>
+</article></div></section><section class="lane l-plat"><h2>🛰 Passed on platform <span class="n">1</span><span class="info" tabindex="0" data-tip="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence." aria-label="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence.">i</span></h2>
 <p class="sub">Proven on QA Wolf infrastructure. Paste, run, reattempt.</p><div class="cards"><article class="card s-runner-verified ">
   <header><span class="fl-name">acc-07</span><span class="grp">tests/account</span>
   <span class="age ">55m ago</span></header>
@@ -99,7 +105,7 @@ stays the control surface; this is the view.</small></h1>
   <div class="f "><span class="fl">fix</span><span class="fv">Waited for the address form to finish validating instead of guessing at a delay</span></div>
   <div class="f mono"><span class="fl">files</span><span class="fv">src/pages/account-page.ts, tests/account/acc-07.spec.ts</span></div>
   <div class="f runs"><span class="fl">runs</span><span class="fv">local 2x green · infra run 1x green</span></div>
-</article></div></section><section class="lane l-g2"><h2>🟩 Local 2x green <span class="n">1</span></h2>
+</article></div></section><section class="lane l-g2"><h2>🟩 Local 2x green <span class="n">1</span><span class="info" tabindex="0" data-tip="Two clean local runs on the same code. Two consecutive clean runs on this machine. The bar every fix must clear before it is called done." aria-label="Two clean local runs on the same code. Two consecutive clean runs on this machine. The bar every fix must clear before it is called done.">i</span></h2>
 <p class="sub">Two clean local runs on the same code.</p><div class="cards"><article class="card s-local-2x-green warm">
   <header><span class="fl-name">srch-02</span><span class="grp">tests/search</span>
   <span class="age warm">1h17m ago</span></header>
@@ -108,7 +114,7 @@ stays the control surface; this is the view.</small></h1>
   <div class="f "><span class="fl">fix</span><span class="fv">Search results now settle on a row count instead of a fixed pause</span></div>
   <div class="f mono"><span class="fl">files</span><span class="fv">tests/search/srch-02.spec.ts</span></div>
   <div class="f runs"><span class="fl">runs</span><span class="fv">local 2x green</span></div>
-</article></div></section><section class="lane l-g1"><h2>🟦 Local 1x <span class="n">1</span></h2>
+</article></div></section><section class="lane l-g1"><h2>🟦 Local 1x <span class="n">1</span><span class="info" tabindex="0" data-tip="One clean local run. Second in progress. One clean run so far; the second is what proves it was not luck." aria-label="One clean local run. Second in progress. One clean run so far; the second is what proves it was not luck.">i</span></h2>
 <p class="sub">One clean local run. Second in progress.</p><div class="cards"><article class="card s-local-1x ">
   <header><span class="fl-name">bil-19</span><span class="grp">tests/billing</span>
   <span class="age ">26m ago</span></header>
@@ -117,7 +123,7 @@ stays the control surface; this is the view.</small></h1>
   <div class="f "><span class="fl">fix</span><span class="fv">Invoice total was read before the currency converter finished</span></div>
   <div class="f mono"><span class="fl">files</span><span class="fv">src/pages/billing-page.ts</span></div>
   <div class="f runs"><span class="fl">runs</span><span class="fv">local 1x green</span></div>
-</article></div></section><section class="lane l-fix"><h2>🔧 Fix ready <span class="n">2</span></h2>
+</article></div></section><section class="lane l-fix"><h2>🔧 Fix ready <span class="n">2</span><span class="info" tabindex="0" data-tip="Diagnosed and edited. Waiting on a paste and a run. The agent has diagnosed the failure and written the change. It is waiting on a human to paste and run it." aria-label="Diagnosed and edited. Waiting on a paste and a run. The agent has diagnosed the failure and written the change. It is waiting on a human to paste and run it.">i</span></h2>
 <p class="sub">Diagnosed and edited. Waiting on a paste and a run.</p><div class="cards"><article class="card s-fix-ready ">
   <header><span class="fl-name">rpt-12</span><span class="grp">tests/reports</span>
   <span class="age ">23m ago</span></header>
@@ -134,7 +140,7 @@ stays the control surface; this is the view.</small></h1>
   <div class="f "><span class="fl">fix</span><span class="fv">The Continue button moved into a new step header, so the old lookup found nothing</span></div>
   <div class="f mono"><span class="fl">files</span><span class="fv">src/pages/onboarding-wizard.ts, tests/onboarding/onb-05.spec.ts</span></div>
   <div class="f runs"><span class="fl">runs</span><span class="fv">none recorded yet</span></div>
-</article></div></section><section class="lane l-inv"><h2>🟡 Investigating <span class="n">1</span></h2>
+</article></div></section><section class="lane l-inv"><h2>🟡 Investigating <span class="n">1</span><span class="info" tabindex="0" data-tip="Claude is working the diagnosis right now. Being diagnosed right now: reading the trace, the log and the live page." aria-label="Claude is working the diagnosis right now. Being diagnosed right now: reading the trace, the log and the live page.">i</span></h2>
 <p class="sub">Claude is working the diagnosis right now.</p><div class="cards"><article class="card s-investigating warm">
   <header><span class="fl-name">adm-03</span><span class="grp">tests/admin</span>
   <span class="age warm">1h28m ago</span></header>
@@ -143,7 +149,7 @@ stays the control surface; this is the view.</small></h1>
   
   
   <div class="f runs"><span class="fl">runs</span><span class="fv">local 1x failed</span></div>
-</article></div></section><section class="lane l-bug"><h2>🐛 Flagged as a bug <span class="n">1</span></h2>
+</article></div></section><section class="lane l-bug"><h2>🐛 Flagged as a bug <span class="n">1</span><span class="info" tabindex="0" data-tip="Not a test defect. Blocked on the product team. The test is right and the product is wrong. Filed with the product team; the test waits for their fix." aria-label="Not a test defect. Blocked on the product team. The test is right and the product is wrong. Filed with the product team; the test waits for their fix.">i</span></h2>
 <p class="sub">Not a test defect. Blocked on the product team.</p><div class="cards"><article class="card s-flagged-bug stuck">
   <header><span class="fl-name">ntf-08</span><span class="grp">tests/notifications</span>
   <span class="age stuck">3h30m ago</span></header>
@@ -152,7 +158,7 @@ stays the control surface; this is the view.</small></h1>
   <div class="f "><span class="fl">fix</span><span class="fv">Report written and handed over</span></div>
   
   <div class="f runs"><span class="fl">runs</span><span class="fv">3 attempts, same result</span></div>
-</article></div></section><section class="lane l-paused"><h2>⏸ Paused <span class="n">1</span></h2>
+</article></div></section><section class="lane l-paused"><h2>⏸ Paused <span class="n">1</span><span class="info" tabindex="0" data-tip="Deliberately out of this round. Set aside on purpose for this round." aria-label="Deliberately out of this round. Set aside on purpose for this round.">i</span></h2>
 <p class="sub">Deliberately out of this round.</p><div class="cards"><article class="card s-paused ">
   <header><span class="fl-name">set-01</span><span class="grp">tests/settings</span>
   <span class="age ">5h34m ago</span></header>

@@ -60,6 +60,11 @@ h1{font-weight:700; font-size:clamp(38px,7vw,60px); line-height:1.02; letter-spa
 .card .go{margin-top:auto; padding-top:12px; font:500 11.5px/1 var(--mono);
   letter-spacing:.13em; text-transform:uppercase; color:var(--cyan)}
 
+.topbar{display:flex; flex-wrap:wrap; gap:10px 24px; align-items:baseline; justify-content:space-between}
+.links{display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center}
+.links a{font:500 11px/1 var(--mono); letter-spacing:.15em; text-transform:uppercase; color:var(--dim); text-decoration:none; border:1px solid var(--line); border-radius:2px; padding:7px 10px}
+.links a:hover{color:var(--fg); border-color:var(--cyan)}
+.links a.pri{color:var(--cyan); border-color:var(--cyan)}
 footer{margin:46px 0 0; border-top:1px solid var(--line); padding-top:22px;
   display:flex; flex-wrap:wrap; gap:8px 26px; align-items:baseline}
 footer a{font-size:15px; text-decoration:none}
@@ -70,7 +75,16 @@ footer a:hover{text-decoration:underline}
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">Los Angeles, CA &nbsp;&middot;&nbsp; US Citizen</p>
+  <div class="topbar">
+    <p class="eyebrow">Los Angeles, CA &nbsp;&middot;&nbsp; US Citizen</p>
+    <nav class="links" aria-label="Contact and resume">
+      <a class="pri" href="/resume">Resume</a>
+      <a href="/Kevin-Bartolome-Resume.pdf">PDF</a>
+      <a href="https://www.linkedin.com/in/kevin-bartolome/">LinkedIn</a>
+      <a href="https://github.com/Kxvin1">GitHub</a>
+      <a href="mailto:kevin.rl.bartolome@gmail.com">Email</a>
+    </nav>
+  </div>
   <h1>Kevin Bartolome</h1>
   <p class="role">AI Engineer &nbsp;&middot;&nbsp; Forward Deployed Engineer &nbsp;&middot;&nbsp; QA Lead &nbsp;&middot;&nbsp; Software Developer</p>
   <p class="deck">I build the systems that let an AI agent do real engineering work, and I
