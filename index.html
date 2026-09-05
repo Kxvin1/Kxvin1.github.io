@@ -113,13 +113,14 @@ footer a:hover{text-decoration:underline}
       <li><span class="num">1</span><div><b>The problem.</b> I lead QA for a large AI product: hundreds of
         automated tests, a stream of failures every day, and one person triaging them by hand.</div></li>
       <li><span class="num">2</span><div><b>What I built.</b> An AI agent that does the triage, the fixes and
-        the verification, and four screens that show me only what needs a human. I approve the parts
-        that are hard to undo. Nothing reaches the product without a recorded run.</div></li>
+        the verification, and one screen that shows me only what needs a human, with three more I open
+        when I want the story behind it. I approve the parts that are hard to undo. Nothing reaches the
+        product without a recorded run.</div></li>
       <li><span class="num">3</span><div><b>What happened.</b> Most of the job now runs itself, the quality bar
         did not move, and the system writes down what it learns so the same mistake is not made twice.
         Everything below is that system, so you can read it, then open it.</div></li>
     </ol>
-    <figure class="flow" aria-label="How the system works: failing tests go to the agent, the agent reports through four screens, a human approves what is hard to undo, tests are signed off">
+    <figure class="flow" aria-label="How the system works: failing tests go to the agent, the agent reports to one screen the person watches with three more holding the detail, a human approves what is hard to undo, tests are signed off">
 <svg viewBox="0 0 1000 150" role="img">
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#39d0ff"/></marker>
@@ -129,7 +130,7 @@ footer a:hover{text-decoration:underline}
     <line x1="146" y1="62" x2="182" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
     <rect x="184" y="26" width="196" height="72" rx="6" fill="#0d1420" stroke="#39d0ff"/><text x="282" y="52" fill="#39d0ff" font-weight="600">AI AGENT</text><text x="282" y="70" fill="#d9eefb" font-size="10.5">triage · fix · verify</text><text x="282" y="86" fill="#7fa3b8" font-size="10.5">runs its own checks</text>
     <line x1="380" y1="62" x2="416" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
-    <rect x="418" y="26" width="222" height="72" rx="6" fill="#0d1420" stroke="#f5c451"/><text x="529" y="52" fill="#f5c451" font-weight="600">FOUR SCREENS</text><text x="529" y="70" fill="#d9eefb" font-size="10.5">only what needs a human</text><text x="529" y="86" fill="#7fa3b8" font-size="10.5">HQ · Board · Flow Ops · Workshop</text>
+    <rect x="418" y="26" width="222" height="72" rx="6" fill="#0d1420" stroke="#f5c451"/><text x="529" y="52" fill="#f5c451" font-weight="600">ONE SCREEN TO WATCH</text><text x="529" y="70" fill="#d9eefb" font-size="10.5">only what needs a human</text><text x="529" y="86" fill="#7fa3b8" font-size="10.5">three more hold the detail</text>
     <line x1="640" y1="62" x2="676" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
     <rect x="678" y="34" width="196" height="56" rx="6" fill="#0d1420" stroke="#c9a7ff"/><text x="776" y="57" fill="#c9a7ff" font-weight="600">HUMAN GATE</text><text x="776" y="76" fill="#7fa3b8" font-size="10.5">approves what is hard to undo</text>
     <line x1="874" y1="62" x2="908" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
@@ -161,10 +162,10 @@ footer a:hover{text-decoration:underline}
     </a>
   </div>
 
-  <p class="grp">See it running <span>the four screens, on invented data. Not screenshots, the real pages.</span></p>
+  <p class="grp">See it running <span>One screen you watch. Three more you open when you want the story behind it. Invented data; not screenshots, the real pages.</span></p>
   <div class="cards four">
     <a class="card d" href="/hq" target="_blank" rel="noopener">
-      <span class="lbl">Screen 1 &middot; What needs me right now?</span>
+      <span class="lbl">The one to watch &middot; What needs me right now?</span>
       <h2>Headquarters</h2>
       <p>The one screen I have to look at: what needs a human, what the agent is doing, what just finished.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>HQ</span></div>
@@ -175,7 +176,7 @@ footer a:hover{text-decoration:underline}
       <span class="go">Open it in a new tab &rarr;</span>
     </a>
     <a class="card b" href="/mission-board" target="_blank" rel="noopener">
-      <span class="lbl">Screen 2 &middot; Where does every broken test stand?</span>
+      <span class="lbl">Detail &middot; Where does every broken test stand?</span>
       <h2>The Mission Board</h2>
       <p>Every test in the round on a ladder from "investigating" to "signed off", and whose turn it is.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Mission Board</span></div>
@@ -186,7 +187,7 @@ footer a:hover{text-decoration:underline}
       <span class="go">Open it in a new tab &rarr;</span>
     </a>
     <a class="card e" href="/flow-ops" target="_blank" rel="noopener">
-      <span class="lbl">Screen 3 &middot; What is running, and did it pass?</span>
+      <span class="lbl">Detail &middot; What is running, and did it pass?</span>
       <h2>Flow Ops</h2>
       <p>Several tests at once in their own lanes, plus every run that finished today and why it failed.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Flow Ops</span></div>
@@ -197,7 +198,7 @@ footer a:hover{text-decoration:underline}
       <span class="go">Open it in a new tab &rarr;</span>
     </a>
     <a class="card f" href="/workshop" target="_blank" rel="noopener">
-      <span class="lbl">Screen 4 &middot; What actually got done today?</span>
+      <span class="lbl">Detail &middot; What actually got done today?</span>
       <h2>The Workshop</h2>
       <p>The day's record: hand-overs, answers, how well the agent's calls held up, and what it learned.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Workshop</span></div>
