@@ -29,7 +29,7 @@ margin:0 0 3px;display:flex;align-items:center;gap:11px}
 .lane .n{background:var(--panel);border:1px solid var(--line);border-radius:999px;
 padding:1px 10px;color:var(--cyan);font-size:11.5px;letter-spacing:.04em}
 .lane .sub{margin:0 0 13px;color:var(--dim);font-size:13px}
-.lane.empty h2{opacity:.5} .none{color:var(--dim);opacity:.6;font-size:13px;margin:0}
+.lane.empty h2{color:var(--dim)} .lane.empty .n{color:var(--dim)} .none{color:var(--dim);opacity:.6;font-size:13px;margin:0}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:13px}
 .card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--line);
 border-radius:12px;padding:13px 16px 14px}
@@ -63,8 +63,9 @@ footer b{color:var(--dim)}
 .stat .info{position:relative;margin-left:6px;width:13px;height:13px;font-size:9px;top:-1px}
 .stat .info::after{left:auto;right:-8px;transform:none}
 @media (max-width:640px){body{padding:20px 14px 50px} .stats{margin-left:0}}
-</style></head><body>
+</style><style>.sw{position:fixed;top:0;right:0;z-index:99;margin:14px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.sw a{font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;padding:7px 10px;text-decoration:none;backdrop-filter:blur(6px)}.sw a:hover{color:#d9eefb;border-color:#39d0ff}.sw a.cur{color:#39d0ff;border-color:#39d0ff}@media (max-width:760px){.sw{position:static;margin:10px 24px 0;justify-content:flex-start}}</style></head><body>
 <a href="/" style="position:fixed;top:0;left:0;z-index:99;margin:14px;padding:7px 12px;font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;text-decoration:none;backdrop-filter:blur(6px)">&larr; Kevin Bartolome</a>
+<nav class="sw" aria-label="The four screens"><a href="/hq">1 · HQ</a><a href="/mission-board" class="cur">2 · Mission Board</a><a href="/flow-ops">3 · Flow Ops</a><a href="/workshop">4 · Workshop</a></nav>
 <div class="demo-banner">Demonstration board. Every name, note and number on this page is invented for the purpose of showing the interface. No client data appears here.</div>
 <div class="wrap">
 <header class="top">
@@ -77,7 +78,7 @@ stays the control surface; this is the view.</small></h1>
 <div class="stat"><b>19</b><span>in round</span><span class="info" tabindex="0" data-tip="Every test handed over in this round, whatever its state." aria-label="Every test handed over in this round, whatever its state.">i</span></div>
 </div>
 </header>
-<div class="bar"><span><b style="color:var(--green)">47%</b> of the round signed off</span>
+<div class="bar"><span><b style="color:var(--green)">47%</b> of the round signed off<span class="info" tabindex="0" data-tip="Share of every test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes." aria-label="Share of every test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes.">i</span></span>
 <span class="meter"><i></i></span></div>
 <section class="lane empty"><h2>🔁 Needs re-run <span class="n">0</span><span class="info" tabindex="0" data-tip="Diagnosed. No code change needed, just a reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass." aria-label="Diagnosed. No code change needed, just a reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass.">i</span></h2><p class="none">Nothing at this stage.</p></section><section class="lane l-rerun"><h2>♻ Passed on re-run <span class="n">2</span><span class="info" tabindex="0" data-tip="No code change needed. Reattempt them. Reattempted with no code change and passed. Nothing to fix." aria-label="No code change needed. Reattempt them. Reattempted with no code change and passed. Nothing to fix.">i</span></h2>
 <p class="sub">No code change needed. Reattempt them.</p><div class="cards"><article class="card s-passed-on-rerun ">

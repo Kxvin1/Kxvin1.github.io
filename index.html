@@ -60,6 +60,23 @@ h1{font-weight:700; font-size:clamp(38px,7vw,60px); line-height:1.02; letter-spa
 .card .go{margin-top:auto; padding-top:12px; font:500 11.5px/1 var(--mono);
   letter-spacing:.13em; text-transform:uppercase; color:var(--cyan)}
 
+body{background-image:linear-gradient(rgba(57,208,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(57,208,255,.035) 1px, transparent 1px), radial-gradient(900px 420px at 20% -10%, rgba(57,208,255,.14), transparent 70%); background-size:44px 44px, 44px 44px, auto; background-attachment:fixed}
+h1{position:relative} h1::after{content:""; display:block; width:72px; height:2px; margin-top:14px; background:linear-gradient(90deg, var(--cyan), transparent)}
+.flow{margin:22px 0 0; padding:14px 0 0; border-top:1px dashed var(--line)}
+.flow svg{display:block; width:100%; height:auto}
+.numbers{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:26px}
+@media (max-width:640px){.numbers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.numbers div{border:1px solid var(--line); border-radius:3px; background:var(--panel2); padding:14px 15px 13px; min-width:0}
+.numbers b{display:block; font:700 26px/1.1 var(--display); color:var(--cyan); letter-spacing:-.01em}
+.numbers div:nth-child(2) b{color:var(--green)} .numbers div:nth-child(3) b{color:#f5c451} .numbers div:nth-child(5) b{color:var(--violet)}
+.numbers span{display:block; margin-top:6px; font-size:12.5px; line-height:1.45; color:var(--dim)}
+.term{background:#08101a; border:1px solid var(--line); border-radius:3px; overflow:hidden; min-width:0; margin-top:4px}
+.term .chrome{display:flex; align-items:center; gap:6px; padding:6px 10px; border-bottom:1px solid var(--line2)}
+.term .dot{width:6px; height:6px; border-radius:50%; background:#1d3448}
+.term .chrome span{margin-left:6px; font:500 9.5px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--dim)}
+.term pre{margin:0; padding:10px 12px; overflow:hidden; font:400 11px/1.65 var(--mono); color:var(--body); white-space:pre}
+.term .c{color:var(--cyan)} .term .d{color:var(--dim)} .term .g{color:var(--green)} .term .w{color:var(--fg); font-weight:600} .term .a{color:#f5c451} .term .r{color:#ff5c6c} .term .v{color:var(--violet)}
+.card:hover .term{border-color:var(--line)} .card:hover .chrome{background:#0a1522}
 .topbar{display:flex; flex-wrap:wrap; gap:10px 24px; align-items:baseline; justify-content:space-between}
 .links{display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center}
 .links a{font:500 11px/1 var(--mono); letter-spacing:.15em; text-transform:uppercase; color:var(--dim); text-decoration:none; border:1px solid var(--line); border-radius:2px; padding:7px 10px}
@@ -78,11 +95,11 @@ footer a:hover{text-decoration:underline}
   <div class="topbar">
     <p class="eyebrow">Los Angeles, CA &nbsp;&middot;&nbsp; US Citizen</p>
     <nav class="links" aria-label="Contact and resume">
-      <a class="pri" href="/resume">Resume</a>
-      <a href="/Kevin-Bartolome-Resume.pdf">PDF</a>
-      <a href="https://www.linkedin.com/in/kevin-bartolome/">LinkedIn</a>
-      <a href="https://github.com/Kxvin1">GitHub</a>
-      <a href="mailto:kevin.rl.bartolome@gmail.com">Email</a>
+      <a class="pri" href="/resume" target="_blank" rel="noopener">Resume</a>
+      <a href="/Kevin-Bartolome-Resume.pdf" target="_blank" rel="noopener">PDF</a>
+      <a href="https://www.linkedin.com/in/kevin-bartolome/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Kxvin1" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:kevin.rl.bartolome@gmail.com" target="_blank" rel="noopener">Email</a>
     </nav>
   </div>
   <h1>Kevin Bartolome</h1>
@@ -102,6 +119,35 @@ footer a:hover{text-decoration:underline}
         did not move, and the system writes down what it learns so the same mistake is not made twice.
         Everything below is that system, so you can read it, then open it.</div></li>
     </ol>
+    <figure class="flow" aria-label="How the system works: failing tests go to the agent, the agent reports through four screens, a human approves what is hard to undo, tests are signed off">
+<svg viewBox="0 0 1000 150" role="img">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#39d0ff"/></marker>
+  </defs>
+  <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12" text-anchor="middle">
+    <rect x="6" y="34" width="140" height="56" rx="6" fill="#0d1420" stroke="#5a2a33"/><text x="76" y="57" fill="#ff5c6c" font-weight="600">FAILING TESTS</text><text x="76" y="76" fill="#7fa3b8" font-size="10.5">dozens a day</text>
+    <line x1="146" y1="62" x2="182" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
+    <rect x="184" y="26" width="196" height="72" rx="6" fill="#0d1420" stroke="#39d0ff"/><text x="282" y="52" fill="#39d0ff" font-weight="600">AI AGENT</text><text x="282" y="70" fill="#d9eefb" font-size="10.5">triage · fix · verify</text><text x="282" y="86" fill="#7fa3b8" font-size="10.5">runs its own checks</text>
+    <line x1="380" y1="62" x2="416" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
+    <rect x="418" y="26" width="222" height="72" rx="6" fill="#0d1420" stroke="#f5c451"/><text x="529" y="52" fill="#f5c451" font-weight="600">FOUR SCREENS</text><text x="529" y="70" fill="#d9eefb" font-size="10.5">only what needs a human</text><text x="529" y="86" fill="#7fa3b8" font-size="10.5">HQ · Board · Flow Ops · Workshop</text>
+    <line x1="640" y1="62" x2="676" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
+    <rect x="678" y="34" width="196" height="56" rx="6" fill="#0d1420" stroke="#c9a7ff"/><text x="776" y="57" fill="#c9a7ff" font-weight="600">HUMAN GATE</text><text x="776" y="76" fill="#7fa3b8" font-size="10.5">approves what is hard to undo</text>
+    <line x1="874" y1="62" x2="908" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
+    <rect x="910" y="34" width="86" height="56" rx="6" fill="#0d1420" stroke="#2f5f46"/><text x="953" y="57" fill="#6fd39a" font-weight="600">SIGNED</text><text x="953" y="76" fill="#7fa3b8" font-size="10.5">off, for real</text>
+    <path d="M282 98 C 282 134, 776 134, 776 90" fill="none" stroke="#7fa3b8" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+    <text x="529" y="142" fill="#7fa3b8" font-size="10.5">every correction becomes a written rule and a test the agent runs on itself</text>
+  </g>
+</svg>
+    </figure>
+  </section>
+
+  <section class="numbers" aria-label="By the numbers">
+    <div><b>1,600+</b><span>end-to-end tests kept green across 13 product domains</span></div>
+    <div><b>82</b><span>classes in the test framework the agent works inside</span></div>
+    <div><b>135</b><span>automated self-checks that guard the machinery itself</span></div>
+    <div><b>62s &rarr; 17s</b><span>to inspect a live page, and 3-8k &rarr; ~1k tokens per investigation</span></div>
+    <div><b>30 &rarr; 2</b><span>daily reading load: thirty failures became two decisions</span></div>
+    <div><b>2</b><span>hand-offs left in a broken test's life, down from ten</span></div>
   </section>
 
   <p class="grp">Read the story</p>
@@ -117,35 +163,55 @@ footer a:hover{text-decoration:underline}
 
   <p class="grp">See it running <span>the four screens, on invented data. Not screenshots, the real pages.</span></p>
   <div class="cards four">
-    <a class="card d" href="/hq">
+    <a class="card d" href="/hq" target="_blank" rel="noopener">
       <span class="lbl">Screen 1 &middot; What needs me right now?</span>
       <h2>Headquarters</h2>
       <p>The one screen I have to look at: what needs a human, what the agent is doing, what just finished.</p>
-      <span class="go">Open it &rarr;</span>
+      <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>HQ</span></div>
+<pre><span class="w">👉 YOUR MOVE (2)</span>
+  <span class="a">1</span> Paste 3 files, then run <span class="w">acc-07</span>
+  <span class="a">2</span> Re-run these 9. No fix needed
+<span class="c">⚡ RIGHT NOW</span>  fixing bil-19  <span class="d">3m 21s</span></pre></div>
+      <span class="go">Open it in a new tab &rarr;</span>
     </a>
-    <a class="card b" href="/mission-board">
+    <a class="card b" href="/mission-board" target="_blank" rel="noopener">
       <span class="lbl">Screen 2 &middot; Where does every broken test stand?</span>
       <h2>The Mission Board</h2>
       <p>Every test in the round on a ladder from "investigating" to "signed off", and whose turn it is.</p>
-      <span class="go">Open it &rarr;</span>
+      <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Mission Board</span></div>
+<pre><span class="g">♻ PASSED ON RE-RUN</span>   chk-04   <span class="d">23m ago</span>
+<span class="g">🛰 PROVEN ON REAL MACHINES</span>  acc-07
+<span class="c">🔧 FIX READY</span>  onb-05  <span class="d">waiting on you</span>
+<span class="a">🟡 INVESTIGATING</span>  bil-19   <span class="d">3m</span></pre></div>
+      <span class="go">Open it in a new tab &rarr;</span>
     </a>
-    <a class="card e" href="/flow-ops">
+    <a class="card e" href="/flow-ops" target="_blank" rel="noopener">
       <span class="lbl">Screen 3 &middot; What is running, and did it pass?</span>
       <h2>Flow Ops</h2>
       <p>Several tests at once in their own lanes, plus every run that finished today and why it failed.</p>
-      <span class="go">Open it &rarr;</span>
+      <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Flow Ops</span></div>
+<pre><span class="w">▶ IN FLIGHT (28)</span>            <span class="d">32 lanes</span>
+  <span class="c">lane 1</span>  bil-19   <span class="c">████████</span><span class="d">░░░░</span>  3m 21s
+  <span class="c">lane 2</span>  srch-02  <span class="c">███</span><span class="d">░░░░░░░░░</span>  1m 04s
+<span class="g">✓ acc-07 passed</span> 6m 23s   <span class="r">✗ adm-03 failed</span></pre></div>
+      <span class="go">Open it in a new tab &rarr;</span>
     </a>
-    <a class="card f" href="/workshop">
+    <a class="card f" href="/workshop" target="_blank" rel="noopener">
       <span class="lbl">Screen 4 &middot; What actually got done today?</span>
       <h2>The Workshop</h2>
       <p>The day's record: hand-overs, answers, how well the agent's calls held up, and what it learned.</p>
-      <span class="go">Open it &rarr;</span>
+      <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Workshop</span></div>
+<pre><span class="g">🏆 143 signed off this week</span>
+<span class="w">⏱ Checkout batch</span>  52 tests  <span class="d">55m</span>
+<span class="c">📈 confident calls</span>  41/43 correct
+<span class="v">🧠 3 lessons became rules</span></pre></div>
+      <span class="go">Open it in a new tab &rarr;</span>
     </a>
   </div>
 
   <p class="grp">About me</p>
   <div class="cards one">
-    <a class="card c" href="/resume">
+    <a class="card c" href="/resume" target="_blank" rel="noopener">
       <span class="lbl">Background</span>
       <h2>Resume</h2>
       <p>Six years across AI automation, QA leadership, test automation and full stack development. Readable here, or
@@ -155,9 +221,9 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <footer>
-    <a href="mailto:kevin.rl.bartolome@gmail.com">kevin.rl.bartolome@gmail.com</a>
-    <a href="https://www.linkedin.com/in/kevin-bartolome/">LinkedIn</a>
-    <a href="https://github.com/Kxvin1">GitHub</a>
+    <a href="mailto:kevin.rl.bartolome@gmail.com" target="_blank" rel="noopener">kevin.rl.bartolome@gmail.com</a>
+    <a href="https://www.linkedin.com/in/kevin-bartolome/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/Kxvin1" target="_blank" rel="noopener">GitHub</a>
   </footer>
 
 </div>

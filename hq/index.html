@@ -23,7 +23,7 @@ h1 small{display:block;letter-spacing:.05em;color:var(--dim);font-size:12.5px;te
 .lane h2{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg);margin:0 0 3px;display:flex;align-items:center;gap:11px}
 .lane .n{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 10px;color:var(--cyan);font-size:11.5px;letter-spacing:.04em}
 .lane .sub{margin:0 0 12px;color:var(--dim);font-size:13px}
-.lane.empty h2{opacity:.55} .none{color:var(--dim);opacity:.65;font-size:13px;margin:0} .none.ok{color:var(--green);opacity:1}
+.lane.empty h2{color:var(--dim)} .lane.empty .n{color:var(--dim)} .none{color:var(--dim);opacity:.65;font-size:13px;margin:0} .none.ok{color:var(--green);opacity:1}
 .l-ym h2{color:var(--gold)} .l-ym .n{color:var(--gold)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:13px}
 .card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 16px 13px}
@@ -49,7 +49,8 @@ ul.rows .time{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim);min-w
 ul.rows .det{font-size:12px;color:var(--dim);flex:1 1 100%}
 .state{border:1px solid var(--line);border-left:4px solid var(--cyan);background:var(--panel);border-radius:10px;padding:10px 14px;font-weight:600;margin-bottom:10px}
 .state .since{font-weight:400;color:var(--dim);font-size:12.5px;margin-left:8px}
-.state.s-working{border-left-color:var(--cyan);color:var(--cyan)}
+.state.s-working{border-left-color:var(--cyan);color:var(--cyan);animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 0 rgba(57,208,255,0)}50%{box-shadow:0 0 18px 0 rgba(57,208,255,.25)}}
 .state.s-waiting,.state.s-waiting-you{border-left-color:var(--amber);color:var(--amber)}
 .state.s-idle-bug{border-left-color:var(--red);color:var(--red)}
 .state.s-idle{border-left-color:var(--line);color:var(--dim)}
@@ -67,8 +68,9 @@ footer b{color:var(--dim)}
 .stat .info{position:relative;margin-left:6px;width:13px;height:13px;font-size:9px;top:-1px}
 .stat .info::after{left:auto;right:-8px;transform:none}
 @media (max-width:640px){body{padding:20px 14px 50px} .stats{margin-left:0}}
-</style></head><body>
+</style><style>.sw{position:fixed;top:0;right:0;z-index:99;margin:14px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.sw a{font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;padding:7px 10px;text-decoration:none;backdrop-filter:blur(6px)}.sw a:hover{color:#d9eefb;border-color:#39d0ff}.sw a.cur{color:#39d0ff;border-color:#39d0ff}@media (max-width:760px){.sw{position:static;margin:10px 24px 0;justify-content:flex-start}}</style></head><body>
 <a href="/" style="position:fixed;top:0;left:0;z-index:99;margin:14px;padding:7px 12px;font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;text-decoration:none;backdrop-filter:blur(6px)">&larr; Kevin Bartolome</a>
+<nav class="sw" aria-label="The four screens"><a href="/hq" class="cur">1 · HQ</a><a href="/mission-board">2 · Mission Board</a><a href="/flow-ops">3 · Flow Ops</a><a href="/workshop">4 · Workshop</a></nav>
 <div class="demo-banner">Demonstration page. Every name, message and number here is invented to show the interface. No client data appears on this page.</div>
 <div class="wrap">
 <header class="top">
@@ -82,10 +84,10 @@ Read only. The terminal stays the control surface; this is the view.</small></h1
 </div>
 </header>
 <div class="lights">
-<span>🌐 <b class="up">staging up</b></span>
-<span>🛡 systems <b>13/13</b> ok</span>
-<span>📱 phone <b>auto</b></span>
-<span>🕒 frozen demonstration snapshot</span>
+<span>🌐 <b class="up">staging up</b><span class="info" tabindex="0" data-tip="Whether the staging environment the tests run against is answering. Checked every minute with one request. Red means runs will fail for reasons that are not the tests&#x27; fault, so nothing gets diagnosed until it is back." aria-label="Whether the staging environment the tests run against is answering. Checked every minute with one request. Red means runs will fail for reasons that are not the tests&#x27; fault, so nothing gets diagnosed until it is back.">i</span></span>
+<span>🛡 systems <b>13/13</b> ok<span class="info" tabindex="0" data-tip="Self-checks on the machinery itself: the four watcher screens, the three sentinel processes that wake the agent, the phone relay, the code indexes and the last tooling audit. One red row names what is down and how it gets fixed." aria-label="Self-checks on the machinery itself: the four watcher screens, the three sentinel processes that wake the agent, the phone relay, the code indexes and the last tooling audit. One red row names what is down and how it gets fixed.">i</span></span>
+<span>📱 phone <b>auto</b><span class="info" tabindex="0" data-tip="How the agent reaches the person&#x27;s phone. auto: push only when the keyboard has been idle. away: push everything. muted: push nothing. Replies from the phone land back in the messages panel." aria-label="How the agent reaches the person&#x27;s phone. auto: push only when the keyboard has been idle. away: push everything. muted: push nothing. Replies from the phone land back in the messages panel.">i</span></span>
+<span>🕒 frozen demonstration snapshot<span class="info" tabindex="0" data-tip="This demonstration is one fixed moment, so the ages and times never drift. The real page regenerates every ten seconds while HQ runs and reloads itself every fifteen." aria-label="This demonstration is one fixed moment, so the ages and times never drift. The real page regenerates every ten seconds while HQ runs and reloads itself every fifteen.">i</span></span>
 </div>
 <section class="lane l-ym"><h2>👉 Your move <span class="n">3</span><span class="info" tabindex="0" data-tip="Everything that is waiting on a human: paste a file, run a test, answer a question. The agent files these itself; the person clears them with one key." aria-label="Everything that is waiting on a human: paste a file, run a test, answer a question. The agent files these itself; the person clears them with one key.">i</span></h2><p class="sub">Waiting on you. Everything else on this page exists to keep this list short.</p><div class="cards"><article class="card ym"><header><span class="act">Paste billing-page.ts and bil-19, then run bil-19</span><span class="meta">bil-19 · 8:15 pm</span></header><div class="chips"><span class="chip">why: the invoice total was read before the currency converter finished</span><span class="chip">if green: mark it passed on the board</span><span class="chip">if not: send me the run link</span></div></article><article class="card ym"><header><span class="act">Re-run chk-04 and chk-11 with no code change</span><span class="meta">chk-04, chk-11 · 8:01 pm</span></header><div class="chips"><span class="chip">why: both died the first time because 40 tests hit the payment sandbox at once; the second attempt was clean on their own</span></div></article><article class="card ym"><header><span class="act">Tell me: is the new address form meant to validate on blur?</span><span class="meta">acc-07 · 7:35 pm</span></header><div class="chips"><span class="chip">why: the spec says validation runs on submit, the app now validates each field on blur</span><span class="chip">if yes: I update the spec note and the test</span><span class="chip">if no: this is a product bug</span></div></article></div></section>
 <section class="lane l-dec"><h2>📥 Decisions <span class="n">1</span><span class="info" tabindex="0" data-tip="A test disagrees with the product and the agent cannot tell whether the product changed on purpose or broke. One key answers: product change, bug, or skip." aria-label="A test disagrees with the product and the agent cannot tell whether the product changed on purpose or broke. One key answers: product change, bug, or skip.">i</span></h2><p class="sub">Product change or bug? One key answers each.</p><ul class="rows"><li><span class="q">❓</span><b>srch-02</b><span class="txt">Search now settles on a row count instead of a spinner. Product change or bug?</span><span class="id">D4</span></li></ul></section>
