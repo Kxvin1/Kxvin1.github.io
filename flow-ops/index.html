@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Flow Ops · demo</title>
+<style>
+:root{--bg:#070b12;--panel:#0d1420;--panel2:#0a121c;--line:#173247;--cyan:#39d0ff;--dim:#7fa3b8;
+--fg:#d9eefb;--red:#ff5c6c;--amber:#ffb84d;--green:#6fd39a;--violet:#c9a7ff;--gold:#f5c451}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 620px at 18% -12%,#0f2236 0%,var(--bg) 62%) fixed;
+color:var(--fg);font:15px/1.55 "Segoe UI",system-ui,sans-serif;padding:30px 24px 72px}
+.wrap{max-width:1240px;margin:0 auto}
+.demo-banner{max-width:1240px;margin:0 auto 20px;border:1px solid var(--violet);border-left:4px solid var(--violet);
+background:#12091f;color:#e2d3ff;border-radius:10px;padding:11px 16px;font-size:13px}
+header.top{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:8px}
+h1{margin:0;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-size:23px}
+h1 small{display:block;letter-spacing:.05em;color:var(--dim);font-size:12.5px;text-transform:none;font-weight:400;margin-top:5px;max-width:62ch}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:9px 15px;min-width:104px}
+.stat b{display:block;font-size:23px;line-height:1.15;color:var(--fg)}
+.stat span{color:var(--dim);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+.stat.ok b{color:var(--green)} .stat.bad b{color:var(--red)} .stat.bug b{color:var(--violet)} .stat.cyan b{color:var(--cyan)}
+.lights{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--dim);font-size:12.5px;padding:12px 0 22px}
+.lights b{color:var(--fg);font-weight:600}
+.lane{margin:0 0 28px}
+.lane h2{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg);margin:0 0 3px;display:flex;align-items:center;gap:11px}
+.lane .n{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 10px;color:var(--cyan);font-size:11.5px;letter-spacing:.04em}
+.lane .sub{margin:0 0 12px;color:var(--dim);font-size:13px}
+.lane.empty h2{opacity:.55} .none{color:var(--dim);opacity:.65;font-size:13px;margin:0}
+ul.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.rows li{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 12px;display:flex;align-items:baseline;gap:10px;font-size:13.5px;flex-wrap:wrap}
+ul.rows b{color:var(--fg)} ul.rows .txt{flex:1 1 260px;color:#c9e2f2;word-break:break-word}
+ul.rows .id,ul.rows .took,ul.rows .el{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim)}
+ul.rows .time{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim);min-width:64px}
+ul.rows .tick{font-weight:700} .tick.seen{color:var(--green)} .tick.new{color:var(--amber)} .tick.bad{color:var(--red)}
+ul.rows .det{font-size:12px;color:var(--amber);flex:1 1 100%}
+ul.rows .lane-id{font:11px ui-monospace,Consolas,monospace;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;min-width:52px}
+ul.rows .eta{font-size:11.5px;color:var(--dim)}
+.meter{flex:0 0 160px;height:7px;border-radius:99px;background:var(--panel);border:1px solid var(--line);overflow:hidden;align-self:center}
+.meter i{display:block;height:100%} .meter i.cyan{background:linear-gradient(90deg,#1e7fa3,var(--cyan))}
+ul.rows .uid{font:600 11.5px ui-monospace,Consolas,monospace;color:var(--red)} .uid.c,.uid.k{color:var(--fg);font-size:13px}
+ul.rows .area{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);min-width:110px}
+.pill{margin-left:auto;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--dim)}
+.pill.ok{color:var(--green);border-color:#2f5f46} .pill.warn{color:var(--amber);border-color:#6b4f1d}
+ul.rows li.qa .qq,ul.rows li.qa .aa{font:700 11px ui-monospace,Consolas,monospace;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--dim)}
+ul.rows li.qa .aa{color:var(--cyan)} ul.rows li.qa .ans{flex:1 1 100%;padding-left:78px;color:#c9e2f2}
+.hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(38px,1fr));gap:6px;align-items:end;height:150px;padding:0 4px}
+.hb{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;font-size:10.5px;color:var(--dim)}
+.hb i{display:block;width:100%;background:linear-gradient(180deg,var(--gold),#7a5f1d);border-radius:4px 4px 0 0;min-height:2px}
+.hb b{color:var(--fg);font-size:11px}
+footer{margin:38px auto 0;color:var(--dim);font-size:12px;border-top:1px solid var(--line);padding-top:13px;max-width:1240px}
+footer b{color:var(--dim)}
+@media (max-width:640px){body{padding:20px 14px 50px} .stats{margin-left:0}}
+</style></head><body>
+<a href="/" style="position:fixed;top:0;left:0;z-index:99;margin:14px;padding:7px 12px;font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;text-decoration:none;backdrop-filter:blur(6px)">&larr; Kevin Bartolome</a>
+<div class="demo-banner">Demonstration page. Every name, message and number here is invented to show the interface. No client data appears on this page.</div>
+<div class="wrap">
+<header class="top">
+<h1>🧪 Flow Ops<small>What is running this second, in which lane, and whether it passed. Read only. Every run here is launched and read from the terminal.</small></h1>
+<div class="stats"><div class="stat cyan"><b>3</b><span>in flight</span></div><div class="stat "><b>1</b><span>on platform</span></div><div class="stat ok"><b>4</b><span>passed today</span></div><div class="stat bad"><b>2</b><span>failed today</span></div></div>
+</header>
+<div class="lights"><span>🛤 lanes <b>4 open</b> · 3 busy</span><span>⏱ typical run <b>about 4 min</b></span><span>🕒 frozen demonstration snapshot</span></div>
+<section class="lane l-run"><h2>▶ In flight <span class="n">3</span></h2><p class="sub">Each test runs in its own lane, several at once. The bar is progress through the test&#x27;s steps.</p><ul class="rows"><li class="run"><span class="lane-id">lane 1</span><b>bil-19</b><span class="txt">Act: waiting for the currency converter response before reading the invoice total</span><span class="el">3m 21s</span><span class="meter"><i class="cyan" style="width:72%"></i></span><span class="eta">≈ 1m left</span></li><li class="run"><span class="lane-id">lane 2</span><b>srch-02</b><span class="txt">Arrange: logging in and opening the search page</span><span class="el">1m 04s</span><span class="meter"><i class="cyan" style="width:22%"></i></span><span class="eta">≈ 3m left</span></li><li class="run"><span class="lane-id">lane 3</span><b>acc-07</b><span class="txt">Assert: address form shows the saved values after refresh</span><span class="el">4m 40s</span><span class="meter"><i class="cyan" style="width:91%"></i></span><span class="eta">≈ under a minute left</span></li></ul></section><section class="lane l-plat"><h2>🛰 Running on platform <span class="n">1</span></h2><p class="sub">Runs the agent launched on the vendor&#x27;s own infrastructure, for tests whose files only exist there.</p><ul class="rows"><li><span class="tick new">🛰</span><b>chk-11</b><span class="txt">verification run on the vendor&#x27;s infrastructure, this exact local code, nothing pasted</span><span class="el">5m 12s</span><span class="id">run r-4f8a</span></li></ul></section><section class="lane l-log"><h2>✓ Flight log <span class="n">6</span></h2><p class="sub">Every run that finished today, newest first. A failure carries the first error line so the fix starts here.</p><ul class="rows fin"><li><span class="time">8:20 pm</span><span class="tick seen">✓</span><b>acc-07</b><span class="txt">vendor infrastructure run</span><span class="took">6m 23s</span></li><li><span class="time">8:10 pm</span><span class="tick seen">✓</span><b>srch-02</b><span class="txt">local run 2 of 2</span><span class="took">3m 51s</span></li><li><span class="time">7:55 pm</span><span class="tick bad">✗</span><b>bil-19</b><span class="txt">local run 1</span><span class="took">4m 08s</span><span class=det>expected $128.40, got $NaN at line 71: total read before the converter answered</span></li><li><span class="time">7:45 pm</span><span class="tick seen">✓</span><b>log-06</b><span class="txt">local run 2 of 2</span><span class="took">3m 48s</span></li><li><span class="time">7:35 pm</span><span class="tick bad">✗</span><b>adm-03</b><span class="txt">local run 1</span><span class="took">2m 11s</span><span class=det>waiting for button &#x27;Save changes&#x27;: the admin form now saves on blur, no button rendered</span></li><li><span class="time">7:25 pm</span><span class="tick seen">✓</span><b>chk-04</b><span class="txt">plain re-run, no code change</span><span class="took">4m 30s</span></li></ul></section><section class="lane l-night"><h2>🌙 Night shift <span class="n">1</span></h2><p class="sub">Queued to run when the lanes go quiet.</p><ul class="rows"><li><span class="tick">🌙</span><b>rpt-12</b><span class="txt">needs the nightly report job to have run first</span><span class="id">after 2:00 am</span></li></ul></section>
+<footer>Demonstration data · source: <b>demo-flowops.json (invented data)</b> · a fixed snapshot, for demonstration · the terminal screen is the control surface; this is the view</footer>
+</div>
+</body></html>

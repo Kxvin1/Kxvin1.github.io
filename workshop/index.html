@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Workshop · demo</title>
+<style>
+:root{--bg:#070b12;--panel:#0d1420;--panel2:#0a121c;--line:#173247;--cyan:#39d0ff;--dim:#7fa3b8;
+--fg:#d9eefb;--red:#ff5c6c;--amber:#ffb84d;--green:#6fd39a;--violet:#c9a7ff;--gold:#f5c451}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 620px at 18% -12%,#0f2236 0%,var(--bg) 62%) fixed;
+color:var(--fg);font:15px/1.55 "Segoe UI",system-ui,sans-serif;padding:30px 24px 72px}
+.wrap{max-width:1240px;margin:0 auto}
+.demo-banner{max-width:1240px;margin:0 auto 20px;border:1px solid var(--violet);border-left:4px solid var(--violet);
+background:#12091f;color:#e2d3ff;border-radius:10px;padding:11px 16px;font-size:13px}
+header.top{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:8px}
+h1{margin:0;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-size:23px}
+h1 small{display:block;letter-spacing:.05em;color:var(--dim);font-size:12.5px;text-transform:none;font-weight:400;margin-top:5px;max-width:62ch}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:9px 15px;min-width:104px}
+.stat b{display:block;font-size:23px;line-height:1.15;color:var(--fg)}
+.stat span{color:var(--dim);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+.stat.ok b{color:var(--green)} .stat.bad b{color:var(--red)} .stat.bug b{color:var(--violet)} .stat.cyan b{color:var(--cyan)}
+.lights{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--dim);font-size:12.5px;padding:12px 0 22px}
+.lights b{color:var(--fg);font-weight:600}
+.lane{margin:0 0 28px}
+.lane h2{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg);margin:0 0 3px;display:flex;align-items:center;gap:11px}
+.lane .n{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 10px;color:var(--cyan);font-size:11.5px;letter-spacing:.04em}
+.lane .sub{margin:0 0 12px;color:var(--dim);font-size:13px}
+.lane.empty h2{opacity:.55} .none{color:var(--dim);opacity:.65;font-size:13px;margin:0}
+ul.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.rows li{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 12px;display:flex;align-items:baseline;gap:10px;font-size:13.5px;flex-wrap:wrap}
+ul.rows b{color:var(--fg)} ul.rows .txt{flex:1 1 260px;color:#c9e2f2;word-break:break-word}
+ul.rows .id,ul.rows .took,ul.rows .el{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim)}
+ul.rows .time{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim);min-width:64px}
+ul.rows .tick{font-weight:700} .tick.seen{color:var(--green)} .tick.new{color:var(--amber)} .tick.bad{color:var(--red)}
+ul.rows .det{font-size:12px;color:var(--amber);flex:1 1 100%}
+ul.rows .lane-id{font:11px ui-monospace,Consolas,monospace;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;min-width:52px}
+ul.rows .eta{font-size:11.5px;color:var(--dim)}
+.meter{flex:0 0 160px;height:7px;border-radius:99px;background:var(--panel);border:1px solid var(--line);overflow:hidden;align-self:center}
+.meter i{display:block;height:100%} .meter i.cyan{background:linear-gradient(90deg,#1e7fa3,var(--cyan))}
+ul.rows .uid{font:600 11.5px ui-monospace,Consolas,monospace;color:var(--red)} .uid.c,.uid.k{color:var(--fg);font-size:13px}
+ul.rows .area{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);min-width:110px}
+.pill{margin-left:auto;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--dim)}
+.pill.ok{color:var(--green);border-color:#2f5f46} .pill.warn{color:var(--amber);border-color:#6b4f1d}
+ul.rows li.qa .qq,ul.rows li.qa .aa{font:700 11px ui-monospace,Consolas,monospace;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--dim)}
+ul.rows li.qa .aa{color:var(--cyan)} ul.rows li.qa .ans{flex:1 1 100%;padding-left:78px;color:#c9e2f2}
+.hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(38px,1fr));gap:6px;align-items:end;height:150px;padding:0 4px}
+.hb{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;font-size:10.5px;color:var(--dim)}
+.hb i{display:block;width:100%;background:linear-gradient(180deg,var(--gold),#7a5f1d);border-radius:4px 4px 0 0;min-height:2px}
+.hb b{color:var(--fg);font-size:11px}
+footer{margin:38px auto 0;color:var(--dim);font-size:12px;border-top:1px solid var(--line);padding-top:13px;max-width:1240px}
+footer b{color:var(--dim)}
+@media (max-width:640px){body{padding:20px 14px 50px} .stats{margin-left:0}}
+</style></head><body>
+<a href="/" style="position:fixed;top:0;left:0;z-index:99;margin:14px;padding:7px 12px;font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;text-decoration:none;backdrop-filter:blur(6px)">&larr; Kevin Bartolome</a>
+<div class="demo-banner">Demonstration page. Every name, message and number here is invented to show the interface. No client data appears on this page.</div>
+<div class="wrap">
+<header class="top">
+<h1>🛠 Workshop<small>The day&#x27;s record: what was handed over, what was answered, how well the agent&#x27;s calls held up, and what it learned. Arrow keys walk back through previous days in the terminal.</small></h1>
+<div class="stats"><div class="stat ok"><b>37</b><span>signed off this week</span></div><div class="stat "><b>3</b><span>batches</span></div><div class="stat cyan"><b>19m</b><span>median fix</span></div><div class="stat bug"><b>4</b><span>product bugs found</span></div></div>
+</header>
+<div class="lights"><span>📅 <b>Tuesday, Sep 1</b></span><span>🕒 8:05 am to 8:30 pm</span><span>🕒 frozen demonstration snapshot</span></div>
+<section class="lane l-bat"><h2>⏱ Batches <span class="n">3</span></h2><p class="sub">Each hand-over, and how long it took from screenshot to signed off. The agent writes a retro for every one.</p><ul class="rows"><li><span class="time">4:45 pm</span><b>Search and account batch</b><span class="txt">11 tests · handed over as a screenshot</span><span class="took">2h 10m</span><span class="pill ok">📝 retro written</span></li><li><span class="time">11:59 am</span><b>Checkout batch</b><span class="txt">15 tests · handed over as a screenshot</span><span class="took">3h 02m</span><span class="pill ok">📝 retro written</span></li><li><span class="time">8:20 am</span><b>Billing regression batch</b><span class="txt">5 tests · handed over as a screenshot</span><span class="took">1h 12m</span><span class="pill warn">⏳ retro pending</span></li></ul></section><section class="lane l-ans"><h2>💬 Claude&#x27;s answers <span class="n">3</span></h2><p class="sub">Questions asked from the phone or the terminal, and what came back.</p><ul class="rows"><li class="qa"><span class="time">8:11 pm</span><span class="qq">Q</span><span class="txt">how long on bil-19? (from the phone)</span><span class="aa">A</span><span class="txt ans">About 10 minutes. The fix is written; the second local run is on lane 1 at step 7 of 9.</span></li><li class="qa"><span class="time">3:40 pm</span><span class="qq">Q</span><span class="txt">why did the whole checkout batch fail on the first run?</span><span class="aa">A</span><span class="txt ans">Suite load. 40 tests hit the payment sandbox at once and 9 of them timed out on the same call. All 9 passed a plain re-run with no code change.</span></li><li class="qa"><span class="time">10:05 am</span><span class="qq">Q</span><span class="txt">is adm-03 a bug or a product change?</span><span class="aa">A</span><span class="txt ans">Product change. The admin form now saves on blur and the Save button is gone by design. The spec note and the test are updated; nothing to file.</span></li></ul></section><section class="lane l-cal"><h2>📈 Calibration and pace </h2><p class="sub">The agent&#x27;s judgment, scored against what actually happened.</p><ul class="rows"><li><span class="tick seen">🚀</span><span class="txt">confident-paste calls: <b>12/13</b> correct</span></li><li><span class="tick seen">🐛</span><span class="txt">bug calls: <b>4/4</b> confirmed by the product team</span></li><li><span class="tick bad">✗</span><span class="txt">classification misses: <b>1</b></span></li><li><span class="tick">⏱</span><span class="txt">median first-seen to signed-off today: <b>19m</b></span></li></ul></section><section class="lane l-trk"><h2>📌 Tracker <span class="n">10</span></h2><p class="sub"></p><p class="sub">3 bugs · 2 changes · 5 features open · 🤖 = the agent suggested it · 👤 = Kevin asked for it</p><ul class="rows"><li><span class="uid c">🤖</span><span class="area">feature · medium</span><span class="txt">Batch census: diagnose a whole failing batch in one pass instead of one trace at a time</span></li><li><span class="uid k">👤</span><span class="area">change · high</span><span class="txt">Board: keep bug-blocked tests visible under the ladder so they are not lost</span></li><li><span class="uid c">🤖</span><span class="area">bug · low</span><span class="txt">Paste queue and paste-ready set disagree when a board row does not name the file</span></li><li><span class="uid k">👤</span><span class="area">feature · low</span><span class="txt">Workshop: one key to open the latest retro</span></li></ul></section><section class="lane l-bugs"><h2>🐛 Known bugs <span class="n">6</span></h2><p class="sub"></p><p class="sub">6 open with the product team · 1 filed today, report written by the agent</p><ul class="rows"><li><span class="uid">#412</span><span class="area">Checkout</span><span class="txt">Promo code field clears itself when the cart total changes</span><span class="pill">in progress</span></li><li><span class="uid">#409</span><span class="area">Account</span><span class="txt">Address form accepts letters in a numeric-only postcode mode</span><span class="pill">filed today</span></li><li><span class="uid">#398</span><span class="area">Search</span><span class="txt">Sorting by date ignores the year when two results share a month</span><span class="pill">in progress</span></li></ul></section><section class="lane l-learn"><h2>🧠 Learned this week <span class="n">3</span></h2><p class="sub">Corrections that became rules. Each one is now a check that fails if it happens again.</p><ul class="rows"><li><span class="tick">🧠</span><span class="txt">A batch investigation starts with a plain re-run. Nine of fifteen first-run failures were load, not defects.</span></li><li><span class="tick">🧠</span><span class="txt">Evidence must be gathered as the user the test runs as. A default-user page dump says nothing about a guest&#x27;s UI.</span></li><li><span class="tick">🧠</span><span class="txt">Nothing unverified reaches Kevin. A fix without a recorded run is not ready to hand over.</span></li></ul></section><section class="lane l-act"><h2>📊 Activity by hour </h2><p class="sub">Signed-off tests per hour today.</p><div class="hours"><div class="hb"><i style="height:16%"></i><span>8a</span><b>1</b></div><div class="hb"><i style="height:50%"></i><span>9a</span><b>3</b></div><div class="hb"><i style="height:66%"></i><span>10a</span><b>4</b></div><div class="hb"><i style="height:33%"></i><span>11a</span><b>2</b></div><div class="hb"><i style="height:83%"></i><span>12p</span><b>5</b></div><div class="hb"><i style="height:50%"></i><span>1p</span><b>3</b></div><div class="hb"><i style="height:66%"></i><span>2p</span><b>4</b></div><div class="hb"><i style="height:100%"></i><span>3p</span><b>6</b></div><div class="hb"><i style="height:50%"></i><span>4p</span><b>3</b></div><div class="hb"><i style="height:33%"></i><span>5p</span><b>2</b></div><div class="hb"><i style="height:33%"></i><span>6p</span><b>2</b></div><div class="hb"><i style="height:16%"></i><span>7p</span><b>1</b></div><div class="hb"><i style="height:16%"></i><span>8p</span><b>1</b></div></div></section>
+<footer>Demonstration data · source: <b>demo-workshop.json (invented data)</b> · a fixed snapshot, for demonstration · the terminal screen is the control surface; this is the view</footer>
+</div>
+</body></html>

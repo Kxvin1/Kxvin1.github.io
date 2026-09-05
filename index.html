@@ -41,7 +41,20 @@ h1{font-weight:700; font-size:clamp(38px,7vw,60px); line-height:1.02; letter-spa
   transition:border-color .15s ease, background .15s ease}
 .card:hover{border-color:var(--cyan); background:var(--panel)}
 .card .lbl{font:500 10.5px/1.8 var(--mono); letter-spacing:.15em; text-transform:uppercase; color:var(--dim)}
-.card.a .lbl{color:var(--green)} .card.b .lbl{color:var(--cyan)} .card.c .lbl{color:var(--violet)} .card.d .lbl{color:#f5c451}
+.card.a .lbl{color:var(--green)} .card.b .lbl{color:var(--cyan)} .card.c .lbl{color:var(--violet)} .card.d .lbl{color:#f5c451} .card.e .lbl{color:var(--cyan)} .card.f .lbl{color:#f5c451}
+.cards.one{grid-template-columns:minmax(268px,1fr); margin-top:0; border-top:0; padding-top:0}
+.cards.four{grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:0; border-top:0; padding-top:0}
+@media (max-width:560px){.cards.four{grid-template-columns:minmax(0,1fr)}}
+.grp{margin:38px 0 12px; font:500 11px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--cyan)}
+.grp span{display:block; margin-top:8px; font:400 13.5px/1.5 var(--sans,system-ui); letter-spacing:0; text-transform:none; color:var(--dim)}
+.grp:first-of-type{margin-top:44px; border-top:1px solid var(--line); padding-top:40px}
+.story{margin-top:34px; border:1px solid var(--line); border-left:2px solid var(--cyan); border-radius:3px; background:var(--panel2); padding:22px 24px}
+.kicker{margin:0 0 14px; font:500 11px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--cyan)}
+.steps{list-style:none; margin:0; padding:0; display:grid; gap:14px}
+.steps li{display:flex; gap:14px; align-items:flex-start}
+.steps .num{flex:0 0 26px; height:26px; border-radius:50%; border:1px solid var(--line); color:var(--cyan); font:600 12px/24px var(--mono); text-align:center}
+.steps div{font-size:15px; line-height:1.6; color:var(--body); max-width:78ch}
+.steps b{color:var(--fg)}
 .card h2{font-size:21px; font-weight:600; letter-spacing:-.005em}
 .card p{margin:0; font-size:14.5px; line-height:1.55; color:var(--body)}
 .card .go{margin-top:auto; padding-top:12px; font:500 11.5px/1 var(--mono);
@@ -59,32 +72,65 @@ footer a:hover{text-decoration:underline}
 
   <p class="eyebrow">Los Angeles, CA &nbsp;&middot;&nbsp; US Citizen</p>
   <h1>Kevin Bartolome</h1>
-  <p class="role">AI Engineer &nbsp;&middot;&nbsp; QA Lead &nbsp;&middot;&nbsp; Software Developer</p>
+  <p class="role">AI Engineer &nbsp;&middot;&nbsp; Forward Deployed Engineer &nbsp;&middot;&nbsp; QA Lead &nbsp;&middot;&nbsp; Software Developer</p>
   <p class="deck">I build the systems that let an AI agent do real engineering work, and I
-  <b>keep a human gate on every decision that is hard to undo</b>. I lead QA for a large AI
-  product, and I automated most of that job myself without lowering the quality bar.</p>
+  <b>keep a human gate on every decision that is hard to undo</b>.</p>
 
-  <div class="cards">
+  <section class="story">
+    <p class="kicker">The story, in three steps</p>
+    <ol class="steps">
+      <li><span class="num">1</span><div><b>The problem.</b> I lead QA for a large AI product: hundreds of
+        automated tests, a stream of failures every day, and one person triaging them by hand.</div></li>
+      <li><span class="num">2</span><div><b>What I built.</b> An AI agent that does the triage, the fixes and
+        the verification, and four screens that show me only what needs a human. I approve the parts
+        that are hard to undo. Nothing reaches the product without a recorded run.</div></li>
+      <li><span class="num">3</span><div><b>What happened.</b> Most of the job now runs itself, the quality bar
+        did not move, and the system writes down what it learns so the same mistake is not made twice.
+        Everything below is that system, so you can read it, then open it.</div></li>
+    </ol>
+  </section>
+
+  <p class="grp">Read the story</p>
+  <div class="cards one">
     <a class="card a" href="/control-room">
-      <span class="lbl">Project</span>
+      <span class="lbl">How it works</span>
       <h2>The Control Room</h2>
       <p>How I handed my daily work to an AI and kept a human gate on every decision that is hard to
-      undo. Written so anyone can follow it.</p>
+      undo. Written so anyone can follow it, with one real day start to finish.</p>
       <span class="go">Read it &rarr;</span>
     </a>
+  </div>
+
+  <p class="grp">See it running <span>the four screens, on invented data. Not screenshots, the real pages.</span></p>
+  <div class="cards four">
     <a class="card d" href="/hq">
-      <span class="lbl">Live demo</span>
+      <span class="lbl">Screen 1 &middot; What needs me right now?</span>
       <h2>Headquarters</h2>
-      <p>The one screen I have to look at: what needs a human right now, what the agent is doing, and
-      what just finished. Running on invented data. Not a screenshot, the real page.</p>
+      <p>The one screen I have to look at: what needs a human, what the agent is doing, what just finished.</p>
       <span class="go">Open it &rarr;</span>
     </a>
     <a class="card b" href="/mission-board">
-      <span class="lbl">Live demo</span>
+      <span class="lbl">Screen 2 &middot; Where does every broken test stand?</span>
       <h2>The Mission Board</h2>
-      <p>Where every broken test stands and whose turn it is. Running on invented data. Not a screenshot, the real page.</p>
+      <p>Every test in the round on a ladder from "investigating" to "signed off", and whose turn it is.</p>
       <span class="go">Open it &rarr;</span>
     </a>
+    <a class="card e" href="/flow-ops">
+      <span class="lbl">Screen 3 &middot; What is running, and did it pass?</span>
+      <h2>Flow Ops</h2>
+      <p>Several tests at once in their own lanes, plus every run that finished today and why it failed.</p>
+      <span class="go">Open it &rarr;</span>
+    </a>
+    <a class="card f" href="/workshop">
+      <span class="lbl">Screen 4 &middot; What actually got done today?</span>
+      <h2>The Workshop</h2>
+      <p>The day's record: hand-overs, answers, how well the agent's calls held up, and what it learned.</p>
+      <span class="go">Open it &rarr;</span>
+    </a>
+  </div>
+
+  <p class="grp">About me</p>
+  <div class="cards one">
     <a class="card c" href="/resume">
       <span class="lbl">Background</span>
       <h2>Resume</h2>
