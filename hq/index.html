@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>HQ · demo</title>
+<style>
+:root{--bg:#070b12;--panel:#0d1420;--panel2:#0a121c;--line:#173247;--cyan:#39d0ff;--dim:#7fa3b8;
+--fg:#d9eefb;--red:#ff5c6c;--amber:#ffb84d;--green:#6fd39a;--violet:#c9a7ff;--gold:#f5c451}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 620px at 18% -12%,#0f2236 0%,var(--bg) 62%) fixed;
+color:var(--fg);font:15px/1.55 "Segoe UI",system-ui,sans-serif;padding:30px 24px 72px}
+.wrap{max-width:1240px;margin:0 auto}
+.demo-banner{max-width:1240px;margin:0 auto 20px;border:1px solid var(--violet);border-left:4px solid var(--violet);
+background:#12091f;color:#e2d3ff;border-radius:10px;padding:11px 16px;font-size:13px}
+header.top{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:8px}
+h1{margin:0;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-size:23px}
+h1 small{display:block;letter-spacing:.05em;color:var(--dim);font-size:12.5px;text-transform:none;font-weight:400;margin-top:5px;max-width:62ch}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:9px 15px;min-width:104px}
+.stat b{display:block;font-size:23px;line-height:1.15;color:var(--cyan)}
+.stat span{color:var(--dim);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+.stat.ok b{color:var(--green)} .stat.warn b{color:var(--amber)} .stat.bug b{color:var(--violet)} .stat.gold b{color:var(--gold)}
+.lights{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--dim);font-size:12.5px;padding:12px 0 22px}
+.lights b{color:var(--fg);font-weight:600} .lights .up{color:var(--green)} .lights .down{color:var(--red)}
+.lane{margin:0 0 28px}
+.lane h2{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg);margin:0 0 3px;display:flex;align-items:center;gap:11px}
+.lane .n{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 10px;color:var(--cyan);font-size:11.5px;letter-spacing:.04em}
+.lane .sub{margin:0 0 12px;color:var(--dim);font-size:13px}
+.lane.empty h2{opacity:.55} .none{color:var(--dim);opacity:.65;font-size:13px;margin:0} .none.ok{color:var(--green);opacity:1}
+.l-ym h2{color:var(--gold)} .l-ym .n{color:var(--gold)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 16px 13px}
+.card header{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+.card .act{font-weight:600;font-size:15.5px;color:var(--fg)}
+.card .meta{margin-left:auto;font-size:11.5px;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:12.5px;color:#c9e2f2}
+ul.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.rows li{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 12px;display:flex;align-items:baseline;gap:10px;font-size:13.5px;flex-wrap:wrap}
+ul.rows .txt{flex:1 1 300px;color:#c9e2f2;word-break:break-word}
+ul.rows .id,ul.rows .age,ul.rows .ref,ul.rows .took{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim)}
+ul.rows .ref{color:var(--cyan)} ul.rows .wait{font-size:11.5px;color:var(--amber)}
+ul.rows .q{color:var(--amber)} ul.rows b{color:var(--fg)}
+ul.rows .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);display:inline-block;align-self:center}
+ul.rows .uid{font:600 11.5px ui-monospace,Consolas,monospace;color:var(--red)}
+ul.rows li.att .uid{color:var(--amber)}
+ul.rows .area{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);min-width:64px}
+.pill{margin-left:auto;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--dim)}
+.pill.ok{color:var(--green);border-color:#2f5f46} .pill.warn{color:var(--amber);border-color:#6b4f1d} .pill.bad{color:var(--red);border-color:#6b2a31}
+ul.rows .tick{font-weight:700} .tick.seen{color:var(--green)} .tick.new{color:var(--amber)} .tick.bad{color:var(--red)}
+ul.rows .time{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim);min-width:64px}
+ul.rows .det{font-size:12px;color:var(--dim);flex:1 1 100%}
+.state{border:1px solid var(--line);border-left:4px solid var(--cyan);background:var(--panel);border-radius:10px;padding:10px 14px;font-weight:600;margin-bottom:10px}
+.state .since{font-weight:400;color:var(--dim);font-size:12.5px;margin-left:8px}
+.state.s-working{border-left-color:var(--cyan);color:var(--cyan)}
+.state.s-waiting,.state.s-waiting-you{border-left-color:var(--amber);color:var(--amber)}
+.state.s-idle-bug{border-left-color:var(--red);color:var(--red)}
+.state.s-idle{border-left-color:var(--line);color:var(--dim)}
+ul.files{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:6px}
+ul.files li{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 12px;display:flex;gap:10px;align-items:baseline}
+ul.files code{font:12px ui-monospace,Consolas,monospace;color:#c9e2f2;word-break:break-all}
+ul.files .for{margin-left:auto;font-size:11.5px;color:var(--dim)}
+.l-brief .head{margin:0 0 6px;font-weight:600;color:var(--fg)} .l-brief .bl{margin:0 0 4px;color:var(--dim);font-size:13.5px}
+footer{margin:38px auto 0;color:var(--dim);font-size:12px;border-top:1px solid var(--line);padding-top:13px;max-width:1240px}
+footer b{color:var(--dim)}
+@media (max-width:640px){body{padding:20px 14px 50px} .stats{margin-left:0}}
+</style></head><body>
+<a href="/" style="position:fixed;top:0;left:0;z-index:99;margin:14px;padding:7px 12px;font:500 10.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:#7fa3b8;background:rgba(7,11,18,.82);border:1px solid #173247;border-radius:2px;text-decoration:none;backdrop-filter:blur(6px)">&larr; Kevin Bartolome</a>
+<div class="demo-banner">Demonstration page. Every name, message and number here is invented to show the interface. No client data appears on this page.</div>
+<div class="wrap">
+<header class="top">
+<h1>HQ<small>The big picture: what needs you, what Claude is doing this second, and what just finished.
+Read only. The terminal stays the control surface; this is the view.</small></h1>
+<div class="stats">
+<div class="stat gold"><b>3</b><span>your move</span></div>
+<div class="stat warn"><b>1</b><span>decisions</span></div>
+<div class="stat bug"><b>3</b><span>unfiled bugs</span></div>
+<div class="stat ok"><b>13/13</b><span>systems</span></div>
+</div>
+</header>
+<div class="lights">
+<span>🌐 <b class="up">staging up</b></span>
+<span>🛡 systems <b>13/13</b> ok</span>
+<span>📱 phone <b>auto</b></span>
+<span>🕒 frozen demonstration snapshot</span>
+</div>
+<section class="lane l-ym"><h2>👉 Your move <span class="n">3</span></h2><p class="sub">Waiting on you. Everything else on this page exists to keep this list short.</p><div class="cards"><article class="card ym"><header><span class="act">Paste billing-page.ts and bil-19, then run bil-19</span><span class="meta">bil-19 · 8:15 pm</span></header><div class="chips"><span class="chip">why: the invoice total was read before the currency converter finished</span><span class="chip">if green: mark it passed on the board</span><span class="chip">if not: send me the run link</span></div></article><article class="card ym"><header><span class="act">Re-run chk-04 and chk-11 with no code change</span><span class="meta">chk-04, chk-11 · 8:01 pm</span></header><div class="chips"><span class="chip">why: both died the first time because 40 tests hit the payment sandbox at once; the second attempt was clean on their own</span></div></article><article class="card ym"><header><span class="act">Tell me: is the new address form meant to validate on blur?</span><span class="meta">acc-07 · 7:35 pm</span></header><div class="chips"><span class="chip">why: the spec says validation runs on submit, the app now validates each field on blur</span><span class="chip">if yes: I update the spec note and the test</span><span class="chip">if no: this is a product bug</span></div></article></div></section>
+<section class="lane l-dec"><h2>📥 Decisions <span class="n">1</span></h2><p class="sub">Product change or bug? One key answers each.</p><ul class="rows"><li><span class="q">❓</span><b>srch-02</b><span class="txt">Search now settles on a row count instead of a spinner. Product change or bug?</span><span class="id">D4</span></li></ul></section>
+<section class="lane l-now"><h2>⚡ Right now </h2><p class="sub">What Claude is on this second.</p><div class="state s-working">🤖 Claude is working on your request <span class="since">since 8:05 pm</span></div><ul class="rows now"><li><span class="dot"></span><span class="txt">Fixing bil-19: wait for the converter response before reading the total</span><span class="ref">bil-19</span><span class="age">25m</span></li><li><span class="dot"></span><span class="txt">Verifying acc-07 on the vendor&#x27;s infrastructure (run 2 of 2)</span><span class="ref">acc-07</span><span class="age">40m</span><span class=wait>waiting on runner pod</span></li></ul></section>
+<section class="lane l-unf"><h2>🐞 Unfiled bugs <span class="n">3</span></h2><p class="sub">Confirmed by us, not yet filed with the product team.</p><ul class="rows"><li><span class="uid">U2</span><span class="area">Account</span><span class="txt">Address form accepts a postcode with letters in the numeric-only country mode</span><span class="pill ok">📝 report ready</span></li><li><span class="uid">U3</span><span class="area">Search</span><span class="txt">Sorting by date ignores the year when two results share a month</span><span class="pill warn">⏳ report pending</span></li><li class="att"><span class="uid">A1</span><span class="area">attach</span><span class="txt">🔗 chk-07, chk-09 → #412 · Promo code field clears itself when the cart total changes</span><span class="pill">already filed, attach the flow</span></li></ul></section>
+<section class="lane l-lb"><h2>🛠 Launch bay <span class="n">2</span></h2><p class="sub">Files that still need to reach the platform. Computed, never hand-maintained.</p><ul class="files"><li><code>src/pages/billing-page.ts</code><span class=for>for bil-19</span></li><li><code>tests/billing/bil-19.spec.ts</code><span class=for>for bil-19</span></li></ul></section>
+<section class="lane l-msg"><h2>✉ Your messages <span class="n">4</span></h2><p class="sub">✓ seen by Claude · ● not yet.</p><ul class="rows msgs"><li><span class="tick seen">✓</span><span class="time">8:25 pm</span><span class="txt">Kevin marked &#x27;tests/search/srch-02&#x27; local 2x green (board hotkey)</span></li><li><span class="tick seen">✓</span><span class="time">8:18 pm</span><span class="txt">Kevin answered decision D3 (chk-04): PRODUCT CHANGE</span></li><li><span class="tick new">●</span><span class="time">8:11 pm</span><span class="txt">Kevin (phone): how long on bil-19?</span></li><li><span class="tick seen">✓</span><span class="time">7:48 pm</span><span class="txt">Kevin marked YOUR-MOVE done: Paste search-page.ts and run srch-02</span></li></ul></section>
+<section class="lane l-fin"><h2>🏁 Finished <span class="n">4</span></h2><p class="sub">Recent completions, newest first.</p><ul class="rows fin"><li><span class="time">8:20 pm</span><span class="tick seen">✓</span><span class="txt">acc-07 · vendor infrastructure run</span><span class="took">6m 23s</span><span class="det">passed, run id recorded on the board</span></li><li><span class="time">8:10 pm</span><span class="tick seen">✓</span><span class="txt">srch-02 · local run 2 of 2</span><span class="took">3m 51s</span><span class="det">two clean runs, promoted to local 2x green</span></li><li><span class="time">7:55 pm</span><span class="tick bad">✗</span><span class="txt">bil-19 · local run 1</span><span class="took">4m 08s</span><span class="det">expected $128.40, got $NaN at line 71</span></li><li><span class="time">7:30 pm</span><span class="tick seen">✓</span><span class="txt">platform pull</span><span class="took">0m 41s</span><span class="det">12 files changed by teammates, none overlap ours</span></li></ul></section>
+<section class="lane l-brief"><h2>📰 Daily briefing </h2><p class="sub">8:05 AM · newest of 2 syncs today</p><p class="head">31 tests in this round: 19 signed off, 7 active, 2 waiting on you, 3 blocked on product bugs.</p><p class="bl">Overnight: teammates changed 12 files; none overlap the 4 we are editing.</p><p class="bl">Suggested order: bil-19 (fix written), then acc-07 (verification running), then the two re-runs.</p></section>
+<footer>Demonstration data · source: <b>demo-hq.json (invented data)</b> ·
+a fixed snapshot, for demonstration ·
+</footer>
+</div>
+
+</body></html>
