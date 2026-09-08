@@ -115,6 +115,9 @@ ul.b b{color:var(--fg); font-weight:600}
   .fill{background:#fff; color:#000; border:.5pt solid #000; padding:0 2pt; font-size:8.6pt}
   .edu{padding:1pt 0; font-size:9.4pt; border-bottom:0} .edu b{font-size:10.5pt} .edu .when{font-size:9pt}
 }
+
+.sum{margin:14px 0 0; font-size:15px; line-height:1.6; color:var(--body)}
+@media print{.sum{font-size:9.15pt; line-height:1.27; margin:3pt 0 0; color:#222}}
 </style>
 </head>
 <body>
@@ -133,14 +136,16 @@ ul.b b{color:var(--fg); font-weight:600}
   </div>
 </header>
 
+<p class="sum">Automated my own day-to-day work as QA Lead on an $11B AI legal platform: an AI agent creates, investigates and repairs the end-to-end tests and runs until it finishes, clearing 300 to 500 failing end-to-end tests a day in about four hours; people keep only the decisions that need a person.</p>
+
 <h2>Skills</h2>
 <dl class="skl">
-  <dt>Languages</dt><dd>TypeScript, JavaScript, Python, Bash, SQL</dd>
-  <dt>AI &amp; Agents</dt><dd>Agent orchestration, LLM evaluation, tool calling, context engineering,
-    system-prompt design, structured output, MCP, Claude&nbsp;Code</dd>
-  <dt>Web &amp; Backend</dt><dd>React, Next.js, Node.js, REST APIs, PostgreSQL</dd>
+  <dt>Languages</dt><dd>TypeScript, JavaScript, Python, SQL, Bash</dd>
+  <dt>AI &amp; Agents</dt><dd>Agent orchestration, LLM evals, prompt engineering, tool calling, guardrails,
+    human-in-the-loop, context engineering, AI observability, structured output, MCP, Claude&nbsp;Code</dd>
+  <dt>Web &amp; Backend</dt><dd>React, Next.js, Node.js, REST APIs, OAuth, PostgreSQL</dd>
   <dt>Testing</dt><dd>Playwright, Appium, Page Object Model, CI test infrastructure, fault injection</dd>
-  <dt>Infrastructure</dt><dd>Docker, GitHub Actions, CI/CD, Git, Linux/WSL2</dd>
+  <dt>Infrastructure</dt><dd>Docker, GitHub Actions, CI/CD, Linux</dd>
 </dl>
 
 <h2>Work Experience</h2>
@@ -153,17 +158,16 @@ ul.b b{color:var(--fg); font-weight:600}
     relationship, scope and outline new coverage with their CSMs and product stakeholders in
     recurring client meetings, and own the delivery reporting they see</li>
     <li>Maintain <b>1,600+ Playwright/TypeScript E2E tests</b> across 13 product domains on an
-    <b>82-class Page Object framework (~76K lines)</b> with a compiler-enforced PageFactory registry;
+    <b>~90-class Page Object framework (~80K lines)</b> with a compiler-enforced PageFactory registry;
     executed platform-wide POM codemod and environment migrations across the full suite</li>
-    <li>Made failure evidence <b>machine-consumable for an AI agent</b>: run logs, Playwright traces,
-    failure video and live application DOM pulled programmatically instead of screenshotted by a human,
-    the integration that made autonomous triage possible</li>
-    <li>Triaged failures by root cause rather than one test at a time: a single call-graph census pinned a
-    <b>suite-wide defect across 71 affected tests</b> in one pass, a re-run-first policy proved a third of
-    batch failures were infrastructure contention needing no code change, and open bugs are
-    <b>re-verified on command</b> by re-running the tests behind each report, never by editing it</li>
-    <li>Converted <b>~1,300 client spec cases</b> into a machine-readable ground-truth dataset, then gated
-    every test against its own spec steps before shipping, so coverage was verified rather than assumed</li>
+    <li><b>Handed my own job to an AI agent end to end</b>: it now creates, investigates, maintains and revalidates E2E tests, pulling
+    run logs, Playwright traces, failure video and live application DOM itself, and works at the depth of a hands-on
+    engineer, root cause and evidence attached</li>
+    <li><b>Turned around 300 to 500 failing end-to-end tests a day</b> in a 1,600+ test Playwright suite, usually inside a four-hour
+    window, by running investigation and repair in parallel through the autonomous agent</li>
+    <li><b>Cut a client-facing bug report from 20-30 minutes to one keystroke</b>: the evidence (trace frame, log, reproduction,
+    affected-test count) is captured during the investigation, and a second keystroke re-verifies every open report by re-running the
+    tests behind it and runs until it finishes, so stale reports stop piling up</li>
   </ul>
 </div>
 
@@ -172,9 +176,9 @@ ul.b b{color:var(--fg); font-weight:600}
     <span class="when">07/2025 to 10/2025</span></div>
   <ul class="b">
     <li><b>Promoted to QA Lead within three months of hire</b> on delivery metrics</li>
-    <li>Validated non-deterministic LLM behavior across <b>65 tests</b>: agentic document workflows, streaming
-    completions with multi-minute retry windows, citation integrity and knowledge-source attachment, spanning
-    native PC, Word Web, iOS/Appium, email and Twilio SMS/MFA, and stealth-browser OAuth against anti-bot protections</li>
+    <li>Validated non-deterministic LLM behavior across <b>65 end-to-end tests</b>: agentic document workflows, streaming
+    completions with multi-minute retry windows, citation integrity and knowledge-source attachment, on Microsoft
+    Word Web and native PC, iOS/Appium, email, Twilio SMS/MFA and Google OAuth through a stealth browser</li>
   </ul>
 </div>
 
@@ -187,7 +191,7 @@ ul.b b{color:var(--fg); font-weight:600}
     <li>Built a <b>Python collection service</b> over REST APIs and SQL that consolidated scattered
     sources into one validated pipeline, replacing manual gathering and measurably improving the
     accuracy of the data teams reported on</li>
-    <li>Owned the <b>deployment path end to end</b>: Git, GitHub Actions and Docker pipelines that
+    <li>Owned the <b>full deployment path</b>: Git, GitHub Actions and Docker pipelines that
     tested and deployed both systems</li>
   </ul>
 </div>
@@ -200,30 +204,26 @@ ul.b b{color:var(--fg); font-weight:600}
     <span class="when">Personal project, 2026 to Present</span></div>
   <a class="link" href="https://kxvin1.github.io/control-room">kxvin1.github.io/control-room</a>
   <ul class="b">
-    <li>Cut a broken test from <b>ten manual hand-offs down to two</b>: an AI agent owns the repair, one
-    always-on screen surfaces only the steps that still need a person, and the day's reading load drops from
-    <b>thirty failures to two decisions</b></li>
-    <li>Designed evidence gates so the agent <b>cannot self-certify</b>: "ready" requires two clean local runs
-    plus one infrastructure run against the same commit, run id attached for audit; proof runs go out
-    <b>twenty at a time</b> on the vendor's infrastructure. <b>500+ automated self-checks</b> guard the harness
-    itself, including fault-injection tests that must catch a planted failure before a checker is trusted</li>
-    <li>Made the agent's work <b>observable</b>: every request, reply and model call is derived from the session
-    transcripts into an inbox with a derived status, a per-day <b>cost ledger</b> that measures each optimisation
-    before it is kept or dropped, and a retention layer that maps every large file to a rule</li>
-    <li>Cut agent context cost from <b>3-8k tokens to ~1k</b> per investigation by replacing raw page snapshots
-    with filtered evidence reports, and live-DOM inspection from <b>62s to 17s</b>, so long investigations stopped
-    exhausting context</li>
-    <li>Built a <b>measurable self-improvement loop</b>: every correction becomes a ledger row read into the next
-    session, a written rule, and where possible a check that fails if it recurs; repeat corrections get their
-    capture fixed, a weekly audit prunes the rulebook, and the agent files its own bugs</li>
-    <li>Architected panels and agent as <b>decoupled processes communicating only through plain-text files</b>,
-    so either side restarts without losing state, and the session <b>hands off to itself</b>: a hand-off written
-    from live state at each close, and a context verdict that calls a fresh session before the limit</li>
+    <li>Cut a broken test from <b>ten manual hand-offs down to two</b>: an AI agent owns the repair, and one always-on
+    screen surfaces only the steps that still need a person</li>
+    <li>Designed evidence gates so the agent <b>cannot self-certify</b>: "ready" needs two clean local runs plus one
+    infrastructure run on the same commit, run id attached, with proof runs <b>twenty at a time</b>; <b>guardrails refuse destructive
+    platform actions at the tool boundary</b></li>
+    <li>Made the agent's work <b>observable</b>: every request, reply and model call is derived from the session transcripts
+    into an inbox with a derived status, plus a per-day <b>cost ledger</b> that measures each optimization before it is kept</li>
+    <li>Cut agent context cost from <b>3-8k tokens to ~1k</b> per investigation with filtered evidence reports instead of raw
+    page snapshots, and live-DOM inspection from <b>62s to 17s</b></li>
+    <li>Built a <b>measurable self-improvement loop</b>: every correction becomes a ledger row, a rule and a check that fails
+    if it recurs (<b>600+ self-checks</b>, each proven against a planted failure first); repeats get their capture fixed, and the
+    agent proposes rule changes as diffs a person accepts</li>
+    <li>Architected panels and agent as <b>decoupled processes communicating only through plain-text files</b>, so either
+    side restarts without losing state, and the session <b>hands off to itself</b> with a context verdict that calls a fresh
+    session before the limit</li>
   </ul>
 </div>
 
 <h2>Education</h2>
-<div class="edu"><b>App Academy</b><span>1000-hour full stack web development, 07/2022</span>
+<div class="edu"><b>App Academy</b><span>1,000-hour full stack web development, 07/2022</span>
   <span class="sep2">&middot;</span><b>CSU Northridge</b><span>B.S. Psychology, 12/2019</span></div>
 
 </div>
