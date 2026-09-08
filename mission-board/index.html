@@ -44,7 +44,7 @@ border-radius:12px;padding:13px 16px 14px}
 .f.why .fv{color:var(--amber)} .f.runs .fv{color:var(--green)}
 .f.mono .fv{font:11.5px/1.5 ui-monospace,Consolas,monospace;color:var(--dim)}
 .card.warm{border-left-color:var(--amber)} .card.stuck{border-left-color:var(--red)}
-.s-needs-rerun,.s-passed-on-rerun,.s-runner-verified,.s-confident-paste,.s-local-2x-green{border-left-color:var(--green)}
+.s-needs-rerun,.s-runner-verified,.s-confident-paste,.s-local-2x-green{border-left-color:var(--green)}
 .s-local-1x{border-left-color:var(--cyan)} .s-fix-ready,.s-handed-off{border-left-color:#5b8dd6}
 .s-platform-failed{border-left-color:var(--red)} .s-flagged-bug{border-left-color:var(--violet)}
 .s-paused{border-left-color:var(--line);opacity:.62}
@@ -80,24 +80,7 @@ stays the control surface; this is the view.</small></h1>
 </header>
 <div class="bar"><span><b style="color:var(--green)">47%</b> of the round signed off<span class="info" tabindex="0" data-tip="Share of every test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes." aria-label="Share of every test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes.">i</span></span>
 <span class="meter"><i></i></span></div>
-<section class="lane empty"><h2>🔁 Needs re-run <span class="n">0</span><span class="info" tabindex="0" data-tip="Diagnosed. No code change needed, just a reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass." aria-label="Diagnosed. No code change needed, just a reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass.">i</span></h2><p class="none">Nothing at this stage.</p></section><section class="lane l-rerun"><h2>♻ Passed on re-run <span class="n">2</span><span class="info" tabindex="0" data-tip="No code change needed. Reattempt them. Reattempted with no code change and passed. Nothing to fix." aria-label="No code change needed. Reattempt them. Reattempted with no code change and passed. Nothing to fix.">i</span></h2>
-<p class="sub">No code change needed. Reattempt them.</p><div class="cards"><article class="card s-passed-on-rerun ">
-  <header><span class="fl-name">chk-04</span><span class="grp">tests/checkout</span>
-  <span class="age ">36m ago</span></header>
-  <div class="f "><span class="fl">note</span><span class="fv">Passed a plain re-run with no code change. It died the first time because 40 tests hit the payment sandbox at once</span></div>
-  
-  
-  
-  <div class="f runs"><span class="fl">runs</span><span class="fv">re-run 1x green</span></div>
-</article><article class="card s-passed-on-rerun ">
-  <header><span class="fl-name">chk-11</span><span class="grp">tests/checkout</span>
-  <span class="age ">38m ago</span></header>
-  <div class="f "><span class="fl">note</span><span class="fv">Same story: first-run timeout under suite load, clean on its own</span></div>
-  
-  
-  
-  <div class="f runs"><span class="fl">runs</span><span class="fv">re-run 1x green</span></div>
-</article></div></section><section class="lane l-plat"><h2>🛰 Passed on platform <span class="n">1</span><span class="info" tabindex="0" data-tip="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence." aria-label="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence.">i</span></h2>
+<section class="lane empty"><h2>🔁 Re-run this <span class="n">0</span><span class="info" tabindex="0" data-tip="Passed unchanged for Claude. Nothing to paste, just reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass." aria-label="Passed unchanged for Claude. Nothing to paste, just reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass.">i</span></h2><p class="none">Nothing at this stage.</p></section><section class="lane l-plat"><h2>🛰 Passed on platform <span class="n">1</span><span class="info" tabindex="0" data-tip="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence." aria-label="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence.">i</span></h2>
 <p class="sub">Proven on QA Wolf infrastructure. Paste, run, reattempt.</p><div class="cards"><article class="card s-runner-verified ">
   <header><span class="fl-name">acc-07</span><span class="grp">tests/account</span>
   <span class="age ">55m ago</span></header>

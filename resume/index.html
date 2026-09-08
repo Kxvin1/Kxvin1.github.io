@@ -159,8 +159,9 @@ ul.b b{color:var(--fg); font-weight:600}
     failure video and live application DOM pulled programmatically instead of screenshotted by a human,
     the integration that made autonomous triage possible</li>
     <li>Triaged failures by root cause rather than one test at a time: a single call-graph census pinned a
-    <b>suite-wide defect across 71 affected tests</b> in one pass, and a re-run-first policy proved a third of
-    batch failures were infrastructure contention needing no code change</li>
+    <b>suite-wide defect across 71 affected tests</b> in one pass, a re-run-first policy proved a third of
+    batch failures were infrastructure contention needing no code change, and open bugs are
+    <b>re-verified on command</b> by re-running the tests behind each report, never by editing it</li>
     <li>Converted <b>~1,300 client spec cases</b> into a machine-readable ground-truth dataset, then gated
     every test against its own spec steps before shipping, so coverage was verified rather than assumed</li>
   </ul>
@@ -203,21 +204,21 @@ ul.b b{color:var(--fg); font-weight:600}
     always-on screen surfaces only the steps that still need a person, and the day's reading load drops from
     <b>thirty failures to two decisions</b></li>
     <li>Designed evidence gates so the agent <b>cannot self-certify</b>: "ready" requires two clean local runs
-    plus one infrastructure run recorded against the same commit, run id attached for audit.
-    <b>135 automated self-checks</b> guard the harness itself, including fault-injection tests that must catch
-    a planted failure before a checker is trusted</li>
+    plus one infrastructure run against the same commit, run id attached for audit; proof runs go out
+    <b>twenty at a time</b> on the vendor's infrastructure. <b>500+ automated self-checks</b> guard the harness
+    itself, including fault-injection tests that must catch a planted failure before a checker is trusted</li>
+    <li>Made the agent's work <b>observable</b>: every request, reply and model call is derived from the session
+    transcripts into an inbox with a derived status, a per-day <b>cost ledger</b> that measures each optimisation
+    before it is kept or dropped, and a retention layer that maps every large file to a rule</li>
     <li>Cut agent context cost from <b>3-8k tokens to ~1k</b> per investigation by replacing raw page snapshots
     with filtered evidence reports, and live-DOM inspection from <b>62s to 17s</b>, so long investigations stopped
-    exhausting context; the same collected evidence turns a client-facing bug report from 20 to 30 minutes of
-    writing into <b>one keystroke</b></li>
+    exhausting context</li>
+    <li>Built a <b>measurable self-improvement loop</b>: every correction becomes a ledger row read into the next
+    session, a written rule, and where possible a check that fails if it recurs; repeat corrections get their
+    capture fixed, a weekly audit flags rules with no check, and the agent files its own bugs</li>
     <li>Architected panels and agent as <b>decoupled processes communicating only through plain-text files</b>,
-    no server and no API, so either side restarts mid-round without losing state; a sentinel process exits the
-    instant a tripwire fires, surfacing unattended failures in <b>~15s</b> rather than at the next check-in, and a
-    supervisor verifies panel relaunches and reports crash loops as bugs instead of retrying forever</li>
-    <li>Built a <b>self-improvement loop</b>: the agent files its own bugs from work it encounters, runs a nightly
-    retro scoring past predictions against outcomes to calibrate confidence, and converts each lesson into a
-    version-controlled rule its next session starts with, every entry stamped with human or AI authorship and
-    enforced by a test</li>
+    so either side restarts without losing state, and the session <b>hands off to itself</b>: a hand-off written
+    from live state at each close, and a context verdict that calls a fresh session before the limit</li>
   </ul>
 </div>
 

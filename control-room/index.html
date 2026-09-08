@@ -333,6 +333,23 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
       </ul>
       <div class="verdict"><b>PROVEN</b><span>otherwise the card cannot move</span></div>
     </div>
+
+    <div class="loop">
+      <div><span class="n">Wide, not one at a time</span>
+        <h3>Twenty tests on twenty machines</h3>
+        <p>Proof runs go out in parallel on the real infrastructure, each test on its own machine, measured
+        at twenty at once with no slowdown. A whole batch proves itself in the time one test used to take.</p></div>
+      <div><span class="n">Merged, not overwritten</span>
+        <h3>Teammates' changes in five seconds</h3>
+        <p>Before it edits a shared file it pulls the latest copy and merges three ways: their version, its
+        own edits, the last known base. Its edits land on top of theirs, and only a same line overlap becomes
+        a conflict for a human to place.</p></div>
+      <div><span class="n">Re-checked, never re-written</span>
+        <h3>Open bugs get re-verified on command</h3>
+        <p>One key re-runs the tests behind every open bug report and records whether each bug still
+        reproduces, run id attached. It never edits a report. If a bug's status changed on the other side,
+        a red flag stays up until I have seen it.</p></div>
+    </div>
   </div>
 </section>
 
@@ -385,9 +402,82 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
         catch a planted mistake, it is not trusted.</p></div>
     </div>
 
+    <div class="loop">
+      <div><span class="n">It keeps a ledger</span>
+        <h3>One row per lesson</h3>
+        <p>Every lesson is a row that says what happened, where the rule now lives and what proved it. The
+        rows are read back into the next session before it starts. If the same correction lands twice, the
+        count goes up and the capture gets fixed, not repeated.</p></div>
+      <div><span class="n">It audits its own rulebook</span>
+        <h3>Learning is not more text</h3>
+        <p>Once a week it measures the rules it loads every session, lists anything said twice, and checks
+        that its memory index still matches the files. A rule with no check behind it is flagged as
+        untrusted.</p></div>
+      <div><span class="n">It shows me the trend</span>
+        <h3>A page for what it learned</h3>
+        <p>What it learned, healed, improved and fixed, on a fourteen day trend, with a countdown to the next
+        retro. If something needs me, that list comes first and each item carries the exact prompt to hand
+        back.</p></div>
+    </div>
+
     <p style="margin-top:24px">The practical effect is that the same problem does not come back, and
     everything it learns about the product is written down where the next investigation will find it. The
     bigger the suite gets, the more that matters.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">The part that watches itself</p>
+    <h2>It keeps its own books</h2>
+    <p class="sub">Since September it records what it was asked, what it answered, what each answer cost and
+    how much disk it takes up. None of that is typed by hand. It is derived from the session transcripts,
+    so it cannot drift from what actually happened.</p>
+
+    <div class="split">
+      <div class="p">
+        <h3>An inbox of everything I asked</h3>
+        <p>One row per request, newest first, with a status the page works out for itself: <strong>done</strong>,
+        <strong>your move</strong> when the last reply handed me an action I have not answered yet,
+        <strong>running</strong> while the session is still writing. Pick a row and the whole exchange opens
+        beside it, with a line at the bottom for what it produced: the tracker rows, the files it named, the
+        asks it left me.</p>
+        <p>A second view lays the day out as a timeline, with a batch of work drawn as one band, so a three
+        hour push reads as one shape instead of forty cards.</p>
+      </div>
+      <div class="term">
+        <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Telemetry</span></div>
+<pre><span class="c">◉ TELEMETRY</span>          <span class="d">41 requests · 1 waiting on you</span>
+<span class="d">────────────────────────────────────────</span>
+<span class="w">MONDAY, SEP 7</span>                              <span class="d">12</span>
+<span class="a">▸</span> Fix the two login tests from overnight  <span class="c">RUNNING</span>
+    <span class="d">4:31 PM · 6 min · 3 replies</span>
+  Why did the export batch stall?           <span class="a">YOUR MOVE</span>
+    <span class="d">3:02 PM · 14 min · 7 replies</span>
+  Start the day                             <span class="g">DONE</span>
+    <span class="d">9:04 AM · 5 min · 6 replies</span>
+<span class="d">────────────────────────────────────────</span>
+<span class="w">$58 today</span> <span class="d">336 calls</span>              <span class="g">storage fine</span></pre>
+      </div>
+    </div>
+
+    <div class="loop">
+      <div><span class="n">What it cost</span>
+        <h3>Every dollar has a line item</h3>
+        <p>Tokens and cost per day and per model, and what share went to re-reading history versus writing
+        answers. Each saving I try is measured, then kept or dropped on the number. One rule sits above all of
+        it: thinking is never cut to save money. Only waste is.</p></div>
+      <div><span class="n">What it takes up</span>
+        <h3>Every large file has a rule</h3>
+        <p>A storage view names the biggest files and folders, who writes each one and which retention rule
+        covers it. One script prunes everything on schedule, and a red banner appears if a cleanup did nothing
+        useful.</p></div>
+      <div><span class="n">How it hands off</span>
+        <h3>It briefs its own next session</h3>
+        <p>A gauge weighs how much context a session has used against what is still in flight and recommends
+        a fresh start. At every close it rewrites a hand-off from live state, and the next session reads it
+        before my first word.</p></div>
+    </div>
   </div>
 </section>
 
@@ -417,8 +507,9 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
   <span class="a">2</span> Re-run these 9. No fix needed
 <span class="w">▶ RUNNING (1)</span>
   <span class="c">bil-19</span>   local run   <span class="d">3m 21s elapsed</span>
-<span class="w">✉ MESSAGES (0)</span>
-  <span class="d">nothing waiting</span>
+<span class="w">🧭 CONTEXT</span>  <span class="g">fine</span>  <span class="d">212k used · nothing blocks a fresh session</span>
+<span class="w">⚡ RIGHT NOW</span>  <span class="c">◐</span> fixing acc-07  <span class="d">☐ verify bil-19  ☑ 3 done</span>
+<span class="w">◈ SYSTEMS</span>  <span class="g">3/3 sentinels</span>  <span class="d">last pull 3:06 PM</span>
 <span class="w">📌 TRACKER</span>  <span class="d">3 bugs · 2 changes · 5 ideas</span></pre>
         </div>
       </div>
@@ -483,6 +574,7 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
 <span class="d">────────────────────────────────────────</span>
 <span class="g">🏆 37 tests fixed and signed off</span>
 <span class="d">⏱ fastest today: 6 minutes</span>
+<span class="w">🔎 BUGS RE-CHECKED</span>  <span class="d">3 still reproduce · 1 gone</span>
 <span class="w">✅ WINS</span>
   <span class="d">9:14p</span>  <span class="w">crt-14</span> signed off      <span class="d">12m</span>
   <span class="d">8:52p</span>  <span class="w">prf-05</span> signed off      <span class="d">28m</span>
