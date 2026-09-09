@@ -69,16 +69,16 @@ footer b{color:var(--dim)}
 <div class="demo-banner">Demonstration board. Every name, note and number on this page is invented for the purpose of showing the interface. No client data appears here.</div>
 <div class="wrap">
 <header class="top">
-<h1>Mission Board<small>Every test in the current round, and whose turn it is. Read only. The terminal board
+<h1>Mission Board<small>Every end-to-end (E2E) test in the current round, and whose turn it is. Read only. The terminal board
 stays the control surface; this is the view.</small></h1>
 <div class="stats">
-<div class="stat ok"><b>9</b><span>passed</span><span class="info" tabindex="0" data-tip="Signed off on the platform by the human-run check, the final word for every test." aria-label="Signed off on the platform by the human-run check, the final word for every test.">i</span></div>
+<div class="stat ok"><b>9</b><span>passed</span><span class="info" tabindex="0" data-tip="Signed off on the platform by the human-run check, the final word for every E2E test." aria-label="Signed off on the platform by the human-run check, the final word for every E2E test.">i</span></div>
 <div class="stat warn"><b>6</b><span>active</span><span class="info" tabindex="0" data-tip="Tests somewhere between investigating and proven: the agent or the person still owns a step." aria-label="Tests somewhere between investigating and proven: the agent or the person still owns a step.">i</span></div>
 <div class="stat bug"><b>1</b><span>product bugs</span><span class="info" tabindex="0" data-tip="Tests that are correct but blocked on a real defect in the product, filed with the product team." aria-label="Tests that are correct but blocked on a real defect in the product, filed with the product team.">i</span></div>
-<div class="stat"><b>19</b><span>in round</span><span class="info" tabindex="0" data-tip="Every test handed over in this round, whatever its state." aria-label="Every test handed over in this round, whatever its state.">i</span></div>
+<div class="stat"><b>19</b><span>in round</span><span class="info" tabindex="0" data-tip="Every E2E test handed over in this round, whatever its state." aria-label="Every E2E test handed over in this round, whatever its state.">i</span></div>
 </div>
 </header>
-<div class="bar"><span><b style="color:var(--green)">47%</b> of the round signed off<span class="info" tabindex="0" data-tip="Share of every test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes." aria-label="Share of every test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes.">i</span></span>
+<div class="bar"><span><b style="color:var(--green)">47%</b> of the round signed off<span class="info" tabindex="0" data-tip="Share of every E2E test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes." aria-label="Share of every E2E test in this round that has been signed off on the platform by the human-run check. The bar fills left to right as the round closes.">i</span></span>
 <span class="meter"><i></i></span></div>
 <section class="lane empty"><h2>🔁 Re-run this <span class="n">0</span><span class="info" tabindex="0" data-tip="Passed unchanged for Claude. Nothing to paste, just reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass." aria-label="Passed unchanged for Claude. Nothing to paste, just reattempt. The first run failed under suite load, not because of a defect. A plain reattempt is expected to pass.">i</span></h2><p class="none">Nothing at this stage.</p></section><section class="lane l-plat"><h2>🛰 Passed on platform <span class="n">1</span><span class="info" tabindex="0" data-tip="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence." aria-label="Proven on QA Wolf infrastructure. Paste, run, reattempt. The fix passed on the vendor&#x27;s own infrastructure with the run id recorded, so the person can paste it with confidence.">i</span></h2>
 <p class="sub">Proven on QA Wolf infrastructure. Paste, run, reattempt.</p><div class="cards"><article class="card s-runner-verified ">
@@ -133,11 +133,11 @@ stays the control surface; this is the view.</small></h1>
   
   
   <div class="f runs"><span class="fl">runs</span><span class="fv">local 1x failed</span></div>
-</article></div></section><section class="lane l-bug"><h2>🐛 Flagged as a bug <span class="n">1</span><span class="info" tabindex="0" data-tip="Not a test defect. Blocked on the product team. The test is right and the product is wrong. Filed with the product team; the test waits for their fix." aria-label="Not a test defect. Blocked on the product team. The test is right and the product is wrong. Filed with the product team; the test waits for their fix.">i</span></h2>
-<p class="sub">Not a test defect. Blocked on the product team.</p><div class="cards"><article class="card s-flagged-bug stuck">
+</article></div></section><section class="lane l-bug"><h2>🐛 Flagged as a bug <span class="n">1</span><span class="info" tabindex="0" data-tip="Not an E2E test defect. Blocked on the product team. The E2E test is right and the product is wrong. Filed with the product team; the E2E test waits for their fix." aria-label="Not an E2E test defect. Blocked on the product team. The E2E test is right and the product is wrong. Filed with the product team; the E2E test waits for their fix.">i</span></h2>
+<p class="sub">Not an E2E test defect. Blocked on the product team.</p><div class="cards"><article class="card s-flagged-bug stuck">
   <header><span class="fl-name">ntf-08</span><span class="grp">tests/notifications</span>
   <span class="age stuck">3h30m ago</span></header>
-  <div class="f "><span class="fl">note</span><span class="fv">Not a test problem. The product sends the welcome email twice when a user is invited twice in a row</span></div>
+  <div class="f "><span class="fl">note</span><span class="fv">Not an E2E test problem. The product sends the welcome email twice when a user is invited twice in a row</span></div>
   <div class="f why"><span class="fl">blocked on</span><span class="fv">Blocked on the product team because filed as issue 412, retest when they close it</span></div>
   <div class="f "><span class="fl">fix</span><span class="fv">Report written and handed over</span></div>
   

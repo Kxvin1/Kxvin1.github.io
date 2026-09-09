@@ -111,7 +111,7 @@ footer a:hover{text-decoration:underline}
     <p class="kicker">The story, in three steps</p>
     <ol class="steps">
       <li><span class="num">1</span><div><b>The problem.</b> I lead QA for a large AI product: hundreds of
-        automated tests, a stream of failures every day, and one person triaging them by hand.</div></li>
+        automated end-to-end (E2E) tests, a stream of failures every day, and one person triaging them by hand.</div></li>
       <li><span class="num">2</span><div><b>What I built.</b> An AI agent that does the triage, the fixes and
         the verification, and one screen that shows me only what needs a human, with three more I open
         when I want the story behind it. I approve the parts that are hard to undo. Nothing reaches the
@@ -121,13 +121,13 @@ footer a:hover{text-decoration:underline}
         It also keeps its own books: every request, every reply, every dollar and every byte, derived from
         the record rather than typed. Everything below is that system, so you can read it, then open it.</div></li>
     </ol>
-    <figure class="flow" aria-label="How the system works: failing tests go to the agent, the agent reports to one screen the person watches with three more holding the detail, a human approves what is hard to undo, tests are signed off">
+    <figure class="flow" aria-label="How the system works: failing E2E tests go to the agent, the agent reports to one screen the person watches with three more holding the detail, a human approves what is hard to undo, E2E tests are signed off">
 <svg viewBox="0 0 1000 150" role="img">
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#39d0ff"/></marker>
   </defs>
   <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12" text-anchor="middle">
-    <rect x="6" y="34" width="140" height="56" rx="6" fill="#0d1420" stroke="#5a2a33"/><text x="76" y="57" fill="#ff5c6c" font-weight="600">FAILING TESTS</text><text x="76" y="76" fill="#7fa3b8" font-size="10.5">dozens a day</text>
+    <rect x="6" y="34" width="140" height="56" rx="6" fill="#0d1420" stroke="#5a2a33"/><text x="76" y="57" fill="#ff5c6c" font-weight="600">FAILING E2E TESTS</text><text x="76" y="76" fill="#7fa3b8" font-size="10.5">dozens a day</text>
     <line x1="146" y1="62" x2="182" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
     <rect x="184" y="26" width="196" height="72" rx="6" fill="#0d1420" stroke="#39d0ff"/><text x="282" y="52" fill="#39d0ff" font-weight="600">AI AGENT</text><text x="282" y="70" fill="#d9eefb" font-size="10.5">triage · fix · verify</text><text x="282" y="86" fill="#7fa3b8" font-size="10.5">runs its own checks</text>
     <line x1="380" y1="62" x2="416" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
@@ -137,19 +137,19 @@ footer a:hover{text-decoration:underline}
     <line x1="874" y1="62" x2="908" y2="62" stroke="#39d0ff" stroke-width="1.5" marker-end="url(#ah)"/>
     <rect x="910" y="34" width="86" height="56" rx="6" fill="#0d1420" stroke="#2f5f46"/><text x="953" y="57" fill="#6fd39a" font-weight="600">SIGNED</text><text x="953" y="76" fill="#7fa3b8" font-size="10.5">off, for real</text>
     <path d="M282 98 C 282 134, 776 134, 776 90" fill="none" stroke="#7fa3b8" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-    <text x="529" y="142" fill="#7fa3b8" font-size="10.5">every correction becomes a written rule and a test the agent runs on itself</text>
+    <text x="529" y="142" fill="#7fa3b8" font-size="10.5">every correction becomes a written rule and a check the agent runs on itself</text>
   </g>
 </svg>
     </figure>
   </section>
 
   <section class="numbers" aria-label="By the numbers">
-    <div><b>1,600+</b><span>end-to-end tests kept green across 13 product domains</span></div>
-    <div><b>82</b><span>classes in the test framework the agent works inside</span></div>
+    <div><b>1,600+</b><span>E2E tests kept green across 13 product domains</span></div>
+    <div><b>82</b><span>classes in the E2E framework the agent works inside</span></div>
     <div><b>500+</b><span>automated self-checks that guard the machinery itself</span></div>
     <div><b>62s &rarr; 17s</b><span>to inspect a live page, and 3-8k &rarr; ~1k tokens per investigation</span></div>
     <div><b>30 &rarr; 2</b><span>daily reading load: thirty failures became two decisions</span></div>
-    <div><b>2</b><span>hand-offs left in a broken test's life, down from ten</span></div>
+    <div><b>2</b><span>hand-offs left in a broken E2E test's life, down from ten</span></div>
   </section>
 
   <p class="grp">Read the story</p>
@@ -177,9 +177,9 @@ footer a:hover{text-decoration:underline}
       <span class="go">Open it in a new tab &rarr;</span>
     </a>
     <a class="card b" href="/mission-board" target="_blank" rel="noopener">
-      <span class="lbl">Detail &middot; Where does every broken test stand?</span>
+      <span class="lbl">Detail &middot; Where does every broken E2E test stand?</span>
       <h2>The Mission Board</h2>
-      <p>Every test in the round on a ladder from "investigating" to "signed off", and whose turn it is.</p>
+      <p>Every E2E test in the round on a ladder from "investigating" to "signed off", and whose turn it is.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Mission Board</span></div>
 <pre><span class="g">♻ PASSED ON RE-RUN</span>   chk-04   <span class="d">23m ago</span>
 <span class="g">🛰 PROVEN ON REAL MACHINES</span>  acc-07
@@ -190,7 +190,7 @@ footer a:hover{text-decoration:underline}
     <a class="card e" href="/flow-ops" target="_blank" rel="noopener">
       <span class="lbl">Detail &middot; What is running, and did it pass?</span>
       <h2>Flow Ops</h2>
-      <p>Several tests at once in their own lanes, plus every run that finished today and why it failed.</p>
+      <p>Several E2E tests at once in their own lanes, plus every run that finished today and why it failed.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Flow Ops</span></div>
 <pre><span class="w">▶ IN FLIGHT (28)</span>            <span class="d">32 lanes</span>
   <span class="c">lane 1</span>  bil-19   <span class="c">████████</span><span class="d">░░░░</span>  3m 21s
@@ -204,7 +204,7 @@ footer a:hover{text-decoration:underline}
       <p>The day's record: hand-overs, answers, how well the agent's calls held up, and what it learned.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Workshop</span></div>
 <pre><span class="g">🏆 143 signed off this week</span>
-<span class="w">⏱ Checkout batch</span>  52 tests  <span class="d">55m</span>
+<span class="w">⏱ Checkout batch</span>  52 E2E tests  <span class="d">55m</span>
 <span class="c">📈 confident calls</span>  41/43 correct
 <span class="v">🧠 3 lessons became rules</span></pre></div>
       <span class="go">Open it in a new tab &rarr;</span>
@@ -238,7 +238,7 @@ footer a:hover{text-decoration:underline}
     <a class="card a" href="/logbook" target="_blank" rel="noopener">
       <span class="lbl">The record &middot; What got done, day by day?</span>
       <h2>The Logbook</h2>
-      <p>A calendar of every batch handed over, every test signed off and every sync, from a whole year down to a single day.</p>
+      <p>A calendar of every batch handed over, every E2E test signed off and every sync, from a whole year down to a single day.</p>
       <div class="term"><div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Logbook</span></div>
 <pre><span class="w">SEPTEMBER 2026</span>          <span class="d">792 passed · 33 batches</span>
   <span class="c">Mon 31</span>  <span class="v">■</span> 1 batch  <span class="g">■</span> 27 passed  <span class="d">■ 6 commits</span>
@@ -264,7 +264,7 @@ footer a:hover{text-decoration:underline}
     <a class="card c" href="/resume" target="_blank" rel="noopener">
       <span class="lbl">Background</span>
       <h2>Resume</h2>
-      <p>Six years across AI automation, QA leadership, test automation and full stack development. Readable here, or
+      <p>Six years across AI automation, QA leadership, E2E test automation and full stack development. Readable here, or
       download the PDF.</p>
       <span class="go">View it &rarr;</span>
     </a>

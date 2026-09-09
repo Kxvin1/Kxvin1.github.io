@@ -38,6 +38,8 @@ strong{color:var(--fg); font-weight:600}
 h1{font-weight:700; font-size:clamp(36px,6.6vw,58px); line-height:1.02; letter-spacing:-.018em; max-width:19ch}
 h1 em{font-style:normal; color:var(--cyan)}
 .deck{margin:20px 0 0; font-size:18.5px; line-height:1.55; color:var(--fg); max-width:52ch}
+.payoff{display:block; margin-top:12px; padding-left:12px; border-left:2px solid var(--green); color:var(--fg)}
+.deck.payoff{margin-top:14px; font-size:17px} .sub.payoff{margin-top:12px} .gain.payoff{margin-top:8px}
 
 /* ---------- headline numbers ---------- */
 .figures{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:38px 0 0;
@@ -125,6 +127,19 @@ ol.steps li b{color:var(--fg); font-weight:600}
 .split .p p:last-child{margin-bottom:0}
 .split .p h3{font-size:18px; font-weight:600; margin:0 0 9px}
 
+/* ---------- core / specialization / instance ---------- */
+.layers{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--line2);
+  border:1px solid var(--line2); margin-top:26px}
+.layer{background:var(--panel); padding:18px 19px 16px; min-width:0}
+.layer h3{font:600 12px/1.6 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--cyan); margin:0}
+.layer.core h3{color:var(--green)} .layer.inst h3{color:var(--dim)}
+.layer .lb{display:block; font:500 12px/1.5 var(--mono); color:var(--dim); margin:2px 0 10px}
+.layer p{font-size:14.5px; line-height:1.55; margin:0; max-width:none}
+.layer .badge{display:inline-block; margin-top:12px; font:500 9px/1.75 var(--mono); letter-spacing:.13em; text-transform:uppercase;
+  border-radius:2px; padding:0 6px; border:1px solid var(--line); color:var(--dim)}
+.layer.core .badge{color:var(--violet); border-color:#453069}
+.layer.spec .badge{color:var(--green); border-color:#2a5c45}
+
 /* ---------- porting cards ---------- */
 .legend{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; margin:20px 0 0;
   font-size:13px; color:var(--dim)}
@@ -174,14 +189,18 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
       <span class="tag own">Personal project</span>
       <span class="tag">Built on my own time</span>
       <span class="tag">Running daily since Aug 2026</span>
+      <span class="tag">One core, specialized per job</span>
     </div>
     <h1>I automated <em>most of my own job</em> and kept the quality bar.</h1>
     <p class="deck">One screen that tells me what needs me, an AI that can see the work, and three more views for when I want the detail. I stayed in the loop for the two
-    decisions that need a human, and handed it everything else.</p>
+    decisions that need a human, and handed it everything else. The E2E suite is the first specialization of one
+    core; Cartograph is the second.</p>
+    <p class="deck payoff">The client went from <strong>deploying weekly to deploying daily</strong>, because the suite that
+    gates their release is green again the same morning it breaks.</p>
     <div class="figures">
-      <div class="hi"><b>800+ tests</b><span>automatically maintained, daily</span></div>
+      <div class="hi"><b>1,600+ E2E tests</b><span>automatically maintained, daily</span></div>
       <div><b>Quality</b><span>kept via human in the loop</span></div>
-      <div><b>128 fixed</b><span>current best single day</span></div>
+      <div><b>521 fixed</b><span>current best single day</span></div>
       <div><b>4 <i>min</i></b><span>fastest, broken to fixed</span></div>
     </div>
   </div>
@@ -193,13 +212,15 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
   <div class="wide">
     <p class="kicker">What changed</p>
     <h2>Give it eyes. Then take everything off the human's desk that does not need a human.</h2>
-    <p class="sub">My day job is keeping a test suite of 1,600 automated tests running against a large product that ships features fast. When the
-    product changes, tests break, and someone works out why. The AI was good at the repair and blind to
+    <p class="sub">My day job is keeping a suite of 1,600 automated end-to-end (E2E) tests running against a large product that ships features fast. When the
+    product changes, E2E tests break, and someone works out why. The AI was good at the repair and blind to
     everything else, so I was the courier.</p>
+    <p class="sub payoff">A broken suite used to hold the client's release for a week. Now it is green by lunch, so they
+    <strong>ship daily</strong>.</p>
     <div class="relay">
       <div class="lane then">
         <h3>Before</h3>
-        <p class="tally">One broken test. Ten hand-offs.</p>
+        <p class="tally">One broken E2E test. Ten hand-offs.</p>
         <ol class="steps">
           <li class="human"><b>Me</b>, reading the failure on a dashboard</li>
           <li class="human"><b>Me</b>, copying the error into a chat</li>
@@ -213,7 +234,7 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
       </div>
       <div class="lane now">
         <h3>After</h3>
-        <p class="tally">One broken test. Two hand-offs.</p>
+        <p class="tally">One broken E2E test. Two hand-offs.</p>
         <ol class="steps">
           <li>It reads the failure and the video itself</li>
           <li>It opens the product and confirms what changed</li>
@@ -229,267 +250,11 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
 
 <section>
   <div class="wide">
-    <p class="kicker">Porting it</p>
-    <h2>The same three jobs get automated every time. The same one stays yours.</h2>
-    <p class="sub">Whatever the work is, the AI gathers the evidence, does the work and proves it. You keep
-    the one step that is hard to undo. Only the words change.</p>
-    <div class="legend">
-      <b><i class="ai"></i> the AI handles it end to end</b>
-      <b><i class="me"></i> stays yours, on purpose</b>
-    </div>
-    <div class="port">
-
-      <div class="pc mine">
-        <div class="role">My test suite <span class="badge">running today</span></div>
-        <div class="chain2">
-          <span class="chip ai">diagnose</span><span class="arw">&rarr;</span>
-          <span class="chip ai">write the fix</span><span class="arw">&rarr;</span>
-          <span class="chip ai">prove it twice</span><span class="arw">&rarr;</span>
-          <span class="chip me">ship it</span>
-        </div>
-        <p class="gain">I read <b>two items a day</b> instead of thirty failures, and I never open a log
-        again.</p>
-      </div>
-
-      <div class="pc">
-        <div class="role">A code review queue</div>
-        <div class="chain2">
-          <span class="chip me">open the PR</span><span class="arw">&rarr;</span>
-          <span class="chip ai">first-pass review</span><span class="arw">&rarr;</span>
-          <span class="chip ai">nits fixed, tests run</span><span class="arw">&rarr;</span>
-          <span class="chip me">approve</span>
-        </div>
-        <p class="gain">Every PR reaches you <b>already cleaned up, with the tests green</b>. You spend
-        your review on the design call, not on naming and formatting.</p>
-      </div>
-
-      <div class="pc">
-        <div class="role">An AI eval loop</div>
-        <div class="chain2">
-          <span class="chip me">change the prompt</span><span class="arw">&rarr;</span>
-          <span class="chip ai">run the evals</span><span class="arw">&rarr;</span>
-          <span class="chip ai">score and diff vs last</span><span class="arw">&rarr;</span>
-          <span class="chip me">promote</span>
-        </div>
-        <p class="gain">Nothing ships on vibes. A prompt cannot be promoted until the <b>scores are
-        recorded against that exact version</b>, and regressions surface before you look.</p>
-      </div>
-
-      <div class="pc">
-        <div class="role">A support desk</div>
-        <div class="chain2">
-          <span class="chip ai">reproduce it</span><span class="arw">&rarr;</span>
-          <span class="chip ai">find the cause</span><span class="arw">&rarr;</span>
-          <span class="chip ai">write and prove the patch</span><span class="arw">&rarr;</span>
-          <span class="chip me">release</span>
-        </div>
-        <p class="gain">Tickets land <b>already reproduced with a proven fix attached</b>. The ones that
-        turn out to be user error never reach an engineer at all.</p>
-      </div>
-
-      <div class="pc">
-        <div class="role">A hiring pipeline</div>
-        <div class="chain2">
-          <span class="chip ai">collect the work samples</span><span class="arw">&rarr;</span>
-          <span class="chip ai">draft the prep notes</span><span class="arw">&rarr;</span>
-          <span class="chip ai">chase the scheduling</span><span class="arw">&rarr;</span>
-          <span class="chip me">every judgement call</span>
-        </div>
-        <p class="gain">You walk into each conversation <b>already briefed</b>, and the admin trail chases
-        itself. No screening decision is ever made for you.</p>
-      </div>
-
-      <div class="pc plan">
-        <div class="role">My own week <span class="badge">building next</span></div>
-        <div class="chain2">
-          <span class="chip me">say what I want</span><span class="arw">&rarr;</span>
-          <span class="chip ai">break it into steps</span><span class="arw">&rarr;</span>
-          <span class="chip ai">chase and surface it</span><span class="arw">&rarr;</span>
-          <span class="chip me">actually do it</span>
-        </div>
-        <p class="gain">One screen that tells me <b>what genuinely needs me today</b>, and hides
-        everything that does not. Same machinery, no testing in sight.</p>
-      </div>
-
-    </div>
-    <p style="margin-top:26px">Every row above has the human gate in a different place, because that is a
-    choice, not a limitation. Move it earlier if the work is risky, later once you trust it.
-    <strong>I am building the personal one next</strong>.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
-    <p class="kicker">The part that makes it trustworthy</p>
-    <h2>The AI cannot mark its own homework</h2>
-    <p class="sub">An AI will tell you the work is ready, because it believes that. So "ready" here is not
-    an opinion. It is a gate, and the evidence has to already exist.</p>
-    <div class="gate">
-      <ul>
-        <li>Two clean runs recorded on my machine</li>
-        <li>One clean run on the real test machines</li>
-        <li>All three against the same version of the code</li>
-        <li>The run id written onto the card, so I can check it</li>
-      </ul>
-      <div class="verdict"><b>PROVEN</b><span>otherwise the card cannot move</span></div>
-    </div>
-
-    <div class="loop">
-      <div><span class="n">Wide, not one at a time</span>
-        <h3>Twenty tests on twenty machines</h3>
-        <p>Proof runs go out in parallel on the real infrastructure, each test on its own machine, measured
-        at twenty at once with no slowdown. A whole batch proves itself in the time one test used to take.</p></div>
-      <div><span class="n">Merged, not overwritten</span>
-        <h3>Teammates' changes in five seconds</h3>
-        <p>Before it edits a shared file it pulls the latest copy and merges three ways: their version, its
-        own edits, the last known base. Its edits land on top of theirs, and only a same line overlap becomes
-        a conflict for a human to place.</p></div>
-      <div><span class="n">Re-checked, never re-written</span>
-        <h3>Open bugs get re-verified on command</h3>
-        <p>One key re-runs the tests behind every open bug report and records whether each bug still
-        reproduces, run id attached. It never edits a report. If a bug's status changed on the other side,
-        a red flag stays up until I have seen it.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
-    <p class="kicker">The part that compounds</p>
-    <h2>It files its own bugs and learns from its own mistakes</h2>
-    <p class="sub">The system is not finished and was never meant to be. It gets a little better every
-    day, and most of that improvement is not mine.</p>
-
-    <div class="split">
-      <div class="p">
-        <h3>A tracker that fills itself</h3>
-        <p>I can file a bug or an idea with one key. The interesting half is that <strong>the AI files
-        them too</strong>, on its own, from whatever it ran into that day: a rough edge in the tooling, a
-        gap it noticed, a bug in my own scripts.</p>
-        <p>Every row says who raised it, so I always know which are mine and which it brought to me. I
-        keep, reprioritise or bin them. Nothing gets built without me saying so.</p>
-      </div>
-      <div class="term">
-        <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Tracker</span></div>
-<pre><span class="c">◉ TRACKER</span>                        <span class="d">6 open</span>
-<span class="d">────────────────────────────────────────</span>
-<span class="w">🐛 BUGS</span>
-  <span class="a">👤</span> Newest card sorts to the bottom   <span class="r">high</span>
-  <span class="v">🤖</span> Demo page could leak real names   <span class="r">high</span>
-<span class="w">🔧 CHANGES</span>
-  <span class="a">👤</span> Cap every panel at four rows      <span class="a">med</span>
-<span class="w">✨ FEATURES</span>
-  <span class="v">🤖</span> Shareable demo mode for the board <span class="a">med</span>
-  <span class="v">🤖</span> Re-queue runs that stall silently <span class="d">low</span>
-  <span class="a">👤</span> Live "what am I on right now"     <span class="r">high</span>
-<span class="d">────────────────────────────────────────</span>
-<span class="v">🤖</span> <span class="d">raised by the AI</span>   <span class="a">👤</span> <span class="d">raised by me</span></pre>
-      </div>
-    </div>
-
-    <div class="loop">
-      <div><span class="n">When something goes wrong</span>
-        <h3>It writes the lesson down</h3>
-        <p>If I correct it, or it repeats a mistake, the rule goes into a permanent file that same day.
-        Not a note for later. Part of how it works from then on.</p></div>
-      <div><span class="n">Every evening</span>
-        <h3>It runs its own retro</h3>
-        <p>It re-reads the day, finds what it got wrong, and writes down anything the live capture missed.
-        It also scores its own past predictions to see where it was overconfident.</p></div>
-      <div><span class="n">Then it locks the door</span>
-        <h3>It adds a test against itself</h3>
-        <p>A lesson becomes an automated check, and the check has to fail on purpose first. If it cannot
-        catch a planted mistake, it is not trusted.</p></div>
-    </div>
-
-    <div class="loop">
-      <div><span class="n">It keeps a ledger</span>
-        <h3>One row per lesson</h3>
-        <p>Every lesson is a row that says what happened, where the rule now lives and what proved it. The
-        rows are read back into the next session before it starts. If the same correction lands twice, the
-        count goes up and the capture gets fixed, not repeated.</p></div>
-      <div><span class="n">It audits its own rulebook</span>
-        <h3>Learning is not more text</h3>
-        <p>Once a week it measures the rules it loads every session, lists anything said twice so the
-        duplicates get merged or retired, and checks that its memory index still matches the files.</p></div>
-      <div><span class="n">It shows me the trend</span>
-        <h3>A page for what it learned</h3>
-        <p>What it learned, healed, improved and fixed, on a fourteen day trend, with a countdown to the next
-        retro. If something needs me, that list comes first and each item carries the exact prompt to hand
-        back.</p></div>
-    </div>
-
-    <p style="margin-top:24px">The practical effect is that the same problem does not come back, and
-    everything it learns about the product is written down where the next investigation will find it. The
-    bigger the suite gets, the more that matters.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
-    <p class="kicker">The part that watches itself</p>
-    <h2>It keeps its own books</h2>
-    <p class="sub">Since September it records what it was asked, what it answered, what each answer cost and
-    how much disk it takes up. None of that is typed by hand. It is derived from the session transcripts,
-    so it cannot drift from what actually happened.</p>
-
-    <div class="split">
-      <div class="p">
-        <h3>An inbox of everything I asked</h3>
-        <p>One row per request, newest first, with a status the page works out for itself: <strong>done</strong>,
-        <strong>your move</strong> when the last reply handed me an action I have not answered yet,
-        <strong>running</strong> while the session is still writing. Pick a row and the whole exchange opens
-        beside it, with a line at the bottom for what it produced: the tracker rows, the files it named, the
-        asks it left me.</p>
-        <p>A second view lays the day out as a timeline, with a batch of work drawn as one band, so a three
-        hour push reads as one shape instead of forty cards.</p>
-      </div>
-      <div class="term">
-        <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Telemetry</span></div>
-<pre><span class="c">◉ TELEMETRY</span>          <span class="d">41 requests · 1 waiting on you</span>
-<span class="d">────────────────────────────────────────</span>
-<span class="w">MONDAY, SEP 7</span>                              <span class="d">12</span>
-<span class="a">▸</span> Fix the two login tests from overnight  <span class="c">RUNNING</span>
-    <span class="d">4:31 PM · 6 min · 3 replies</span>
-  Why did the export batch stall?           <span class="a">YOUR MOVE</span>
-    <span class="d">3:02 PM · 14 min · 7 replies</span>
-  Start the day                             <span class="g">DONE</span>
-    <span class="d">9:04 AM · 5 min · 6 replies</span>
-<span class="d">────────────────────────────────────────</span>
-<span class="w">$58 today</span> <span class="d">336 calls</span>              <span class="g">storage fine</span></pre>
-      </div>
-    </div>
-
-    <div class="loop">
-      <div><span class="n">What it cost</span>
-        <h3>Every dollar has a line item</h3>
-        <p>Tokens and cost per day and per model, and what share went to re-reading history versus writing
-        answers. Each saving I try is measured, then kept or dropped on the number. One rule sits above all of
-        it: thinking is never cut to save money. Only waste is.</p></div>
-      <div><span class="n">What it takes up</span>
-        <h3>Every large file has a rule</h3>
-        <p>A storage view names the biggest files and folders, who writes each one and which retention rule
-        covers it. One script prunes everything on schedule, and a red banner appears if a cleanup did nothing
-        useful.</p></div>
-      <div><span class="n">How it hands off</span>
-        <h3>It briefs its own next session</h3>
-        <p>A gauge weighs how much context a session has used against what is still in flight and recommends
-        a fresh start. At every close it rewrites a hand-off from live state, and the next session reads it
-        before my first word.</p></div>
-    </div>
-    <p class="wgo">Open the record as pages: <a href="https://kxvin1.github.io/telemetry">Telemetry</a> &middot;
-    <a href="https://kxvin1.github.io/upgrade-bay">Upgrade Bay</a> &middot;
-    <a href="https://kxvin1.github.io/logbook">Logbook</a> &middot;
-    <a href="https://kxvin1.github.io/recalibration">Recalibration</a></p>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
     <p class="kicker">One screen to watch, three for detail</p>
     <h2>Each one answers exactly one question</h2>
     <p class="sub">They sit open on a second monitor. The AI writes to them as it works. Real panels,
     names changed.</p>
+    <p class="sub payoff">Headquarters belongs to the core. The other three are the E2E specialization's.</p>
 
     <div class="watchers">
 
@@ -519,9 +284,9 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
 
       <div class="watcher">
         <div class="wtext">
-          <p class="q">Where does every broken test stand?</p>
+          <p class="q">Where does every broken E2E test stand?</p>
           <h3>The Mission Board</h3>
-          <p>One card per test, ordered by how close it is to done. A card that has not moved in three
+          <p>One card per E2E test, ordered by how close it is to done. A card that has not moved in three
           hours turns red on its own.</p>
           <p class="wgo"><a href="https://kxvin1.github.io/mission-board">Open this screen as a page &rarr;</a></p>
         </div>
@@ -545,7 +310,7 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
         <div class="wtext">
           <p class="q">What is running, and did it pass?</p>
           <h3>Flow Ops</h3>
-          <p>Several tests run at once, in their own lanes. Before, they went one at a time, and most of
+          <p>Several E2E tests run at once, in their own lanes. Before, they went one at a time, and most of
           the day was waiting.</p>
           <p class="wgo"><a href="https://kxvin1.github.io/flow-ops">Open this screen as a page &rarr;</a></p>
         </div>
@@ -575,7 +340,7 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
           <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Workshop</span></div>
 <pre><span class="c">◉ WORKSHOP</span>              <span class="d">Tuesday, Sep 1</span>
 <span class="d">────────────────────────────────────────</span>
-<span class="g">🏆 37 tests fixed and signed off</span>
+<span class="g">🏆 37 E2E tests fixed and signed off</span>
 <span class="d">⏱ fastest today: 6 minutes</span>
 <span class="w">🔎 BUGS RE-CHECKED</span>  <span class="d">3 still reproduce · 1 gone</span>
 <span class="w">✅ WINS</span>
@@ -593,34 +358,328 @@ footer .sig{font:500 11.5px/1.6 var(--mono); letter-spacing:.11em; text-transfor
 
 <section>
   <div class="wide">
+    <p class="kicker">The part that compounds</p>
+    <h2>It files its own bugs and learns from its own mistakes</h2>
+    <p class="sub">The system is not finished and was never meant to be. It gets a little better every
+    day, and most of that improvement is not mine.</p>
+
+    <div class="split">
+      <div class="p">
+        <h3>A tracker that fills itself</h3>
+        <p>I can file a bug or an idea with one key. The interesting half is that <strong>the AI files
+        them too</strong>, on its own, from whatever it ran into that day: a rough edge in the tooling, a
+        gap it noticed, a bug in my own scripts.</p>
+        <p>Every row says who raised it, so I always know which are mine and which it brought to me. I
+        keep, reprioritize or bin them.</p>
+        <p class="payoff">Nothing gets built without me saying so.</p>
+      </div>
+      <div class="term">
+        <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Tracker</span></div>
+<pre><span class="c">◉ TRACKER</span>                        <span class="d">6 open</span>
+<span class="d">────────────────────────────────────────</span>
+<span class="w">🐛 BUGS</span>
+  <span class="a">👤</span> Newest card sorts to the bottom   <span class="r">high</span>
+  <span class="v">🤖</span> Demo page could leak real names   <span class="r">high</span>
+<span class="w">🔧 CHANGES</span>
+  <span class="a">👤</span> Cap every panel at four rows      <span class="a">med</span>
+<span class="w">✨ FEATURES</span>
+  <span class="v">🤖</span> Shareable demo mode for the board <span class="a">med</span>
+  <span class="v">🤖</span> Re-queue runs that stall silently <span class="d">low</span>
+  <span class="a">👤</span> Live "what am I on right now"     <span class="r">high</span>
+<span class="d">────────────────────────────────────────</span>
+<span class="v">🤖</span> <span class="d">raised by the AI</span>   <span class="a">👤</span> <span class="d">raised by me</span></pre>
+      </div>
+    </div>
+
+    <div class="loop">
+      <div><span class="n">When something goes wrong</span>
+        <h3>It writes the lesson down</h3>
+        <p>If I correct it, or it repeats a mistake, the rule goes into a permanent file that same day.</p>
+        <p class="payoff">Not a note for later. Part of how it works from then on.</p></div>
+      <div><span class="n">Every evening</span>
+        <h3>It runs its own retro</h3>
+        <p>It re-reads the day, finds what it got wrong, and writes down anything the live capture missed.</p>
+        <p class="payoff">It also scores its own past predictions to see where it was overconfident.</p></div>
+      <div><span class="n">Then it locks the door</span>
+        <h3>It adds a check against itself</h3>
+        <p>A lesson becomes an automated check, and the check has to fail on purpose first.</p>
+        <p class="payoff">If it cannot catch a planted mistake, it is not trusted.</p></div>
+    </div>
+
+    <div class="loop">
+      <div><span class="n">It keeps a ledger</span>
+        <h3>One row per lesson</h3>
+        <p>Every lesson is a row that says what happened, where the rule now lives and what proved it. The
+        rows are read back into the next session before it starts.</p>
+        <p class="payoff">If the same correction lands twice, the count goes up and the capture gets fixed, not
+        repeated.</p></div>
+      <div><span class="n">It audits its own rulebook</span>
+        <h3>Learning is not more text</h3>
+        <p>Once a week it measures the rules it loads every session, lists anything said twice so the
+        duplicates get merged or retired, and checks that its memory index still matches the files.</p>
+        <p class="payoff">The rulebook gets shorter and sharper, not longer.</p></div>
+      <div><span class="n">It shows me the trend</span>
+        <h3>A page for what it learned</h3>
+        <p>What it learned, healed, improved and fixed, on a fourteen day trend, with a countdown to the next
+        retro.</p>
+        <p class="payoff">If something needs me, that list comes first and each item carries the exact prompt to
+        hand back.</p></div>
+    </div>
+
+    <p style="margin-top:24px">The practical effect is that the same problem does not come back, and
+    everything it learns about the product is written down where the next investigation will find it. The
+    bigger the suite gets, the more that matters.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">The part that watches itself</p>
+    <h2>It keeps its own books</h2>
+    <p class="sub">Since September it records what it was asked, what it answered, what each answer cost and
+    how much disk it takes up. None of that is typed by hand. It is derived from the session transcripts,
+    so it cannot drift from what actually happened.</p>
+
+    <div class="split">
+      <div class="p">
+        <h3>An inbox of everything I asked</h3>
+        <p>One row per request, newest first, with a status the page works out for itself: <strong>done</strong>,
+        <strong>your move</strong> when the last reply handed me an action I have not answered yet,
+        <strong>running</strong> while the session is still writing.</p>
+        <p class="payoff">Pick a row and the whole exchange opens beside it, with a line at the bottom for what it
+        produced: the tracker rows, the files it named, the asks it left me.</p>
+        <p>A second view lays the day out as a timeline, with a batch of work drawn as one band.</p>
+        <p class="payoff">A three hour push reads as one shape instead of forty cards.</p>
+      </div>
+      <div class="term">
+        <div class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Telemetry</span></div>
+<pre><span class="c">◉ TELEMETRY</span>          <span class="d">41 requests · 1 waiting on you</span>
+<span class="d">────────────────────────────────────────</span>
+<span class="w">MONDAY, SEP 7</span>                              <span class="d">12</span>
+<span class="a">▸</span> Fix two login E2E tests from overnight    <span class="c">RUNNING</span>
+    <span class="d">4:31 PM · 6 min · 3 replies</span>
+  Why did the export batch stall?           <span class="a">YOUR MOVE</span>
+    <span class="d">3:02 PM · 14 min · 7 replies</span>
+  Start the day                             <span class="g">DONE</span>
+    <span class="d">9:04 AM · 5 min · 6 replies</span>
+<span class="d">────────────────────────────────────────</span>
+<span class="w">$58 today</span> <span class="d">336 calls</span>              <span class="g">storage fine</span></pre>
+      </div>
+    </div>
+
+    <div class="loop">
+      <div><span class="n">What it cost</span>
+        <h3>Every dollar has a line item</h3>
+        <p>Tokens and cost per day and per model, and what share went to re-reading history versus writing
+        answers. Each saving I try is measured, then kept or dropped on the number.</p>
+        <p class="payoff">One rule sits above all of it: thinking is never cut to save money. Only waste is.</p></div>
+      <div><span class="n">What it takes up</span>
+        <h3>Every large file has a rule</h3>
+        <p>A storage view names the biggest files and folders, who writes each one and which retention rule
+        covers it. One script prunes everything on schedule.</p>
+        <p class="payoff">If a cleanup did nothing useful, a red banner says so.</p></div>
+      <div><span class="n">How it hands off</span>
+        <h3>It briefs its own next session</h3>
+        <p>A gauge weighs how much context a session has used against what is still in flight and recommends
+        a fresh start. At every close it rewrites a hand-off from live state.</p>
+        <p class="payoff">The next session reads it before my first word.</p></div>
+    </div>
+    <p class="wgo">Open the record as pages: <a href="https://kxvin1.github.io/telemetry">Telemetry</a> &middot;
+    <a href="https://kxvin1.github.io/upgrade-bay">Upgrade Bay</a> &middot;
+    <a href="https://kxvin1.github.io/logbook">Logbook</a> &middot;
+    <a href="https://kxvin1.github.io/recalibration">Recalibration</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">The part that makes it trustworthy</p>
+    <h2>The AI cannot mark its own homework</h2>
+    <p class="sub">An AI will tell you the work is ready, because it believes that. So "ready" here is not
+    an opinion. It is a gate, and the evidence has to already exist.</p>
+    <p class="sub payoff">The gates live in the core, so every specialization inherits them before it has written a
+    line of its own.</p>
+    <div class="gate">
+      <ul>
+        <li>Two clean runs recorded on my machine</li>
+        <li>One clean run on the real E2E test machines</li>
+        <li>All three against the same version of the code</li>
+        <li>The run id written onto the card, so I can check it</li>
+      </ul>
+      <div class="verdict"><b>PROVEN</b><span>otherwise the card cannot move</span></div>
+    </div>
+
+    <div class="loop">
+      <div><span class="n">Wide, not one at a time</span>
+        <h3>Twenty E2E tests on twenty machines</h3>
+        <p>Proof runs go out in parallel on the real infrastructure, each E2E test on its own machine, measured
+        at twenty at once with no slowdown. A whole batch proves itself in the time one E2E test used to take.</p>
+        <p class="payoff">That is what makes a <strong>same-day release</strong> possible instead of a weekly one.</p></div>
+      <div><span class="n">Merged, not overwritten</span>
+        <h3>Teammates' changes in five seconds</h3>
+        <p>Before it edits a shared file it pulls the latest copy and merges three ways: their version, its
+        own edits, the last known base.</p>
+        <p class="payoff">Its edits land on top of theirs, and only a same line overlap becomes a conflict for a
+        human to place.</p></div>
+      <div><span class="n">Re-checked, never re-written</span>
+        <h3>Open bugs get re-verified on command</h3>
+        <p>One key re-runs the E2E tests behind every open bug report and records whether each bug still
+        reproduces, run id attached. It never edits a report.</p>
+        <p class="payoff">If a bug's status changed on the other side, a red flag stays up until I have seen it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
     <p class="kicker">One real day</p>
-    <h2>September 3rd, start to finish</h2>
-    <p class="sub">Not a demonstration. One ordinary day, taken off the Workshop screen.</p>
+    <h2>September 3rd: hundreds of E2E tests broken at 9am, 500 fixed by early afternoon</h2>
+    <p class="sub">Not a demonstration. One ordinary day, taken off the Workshop screen. The whole thing, from the
+    morning hand-off to a green suite, took about four hours, and my hands were on it for minutes.</p>
+    <p class="sub payoff">That is what lets the client <strong>deploy daily instead of weekly</strong>: the suite is green
+    again the same morning it breaks.</p>
     <div class="stat3">
-      <div><b>800+ tests investigated </b><span>test suite comes in at 9am, green light within hours</span></div>
-      <div><b>32 at a time</b><span>tests run in parallel lanes, not one by one</span></div>
-      <div><b>under a minute</b><span>my hands-on time per test</span></div>
+      <div><b>500 E2E tests fixed</b><span>from one morning hand-off, before the afternoon</span></div>
+      <div><b>4 hours</b><span>from hundreds of failures to a green suite, so the client ships daily, not weekly</span></div>
+      <div><b>20 at a time</b><span>E2E tests run in parallel lanes, not one by one</span></div>
     </div>
     <div class="day">
-      <div class="row"><time>morning</time><div class="what"><span class="who k">Me</span>
-        One link: the immediate results. <b>Hundreds of tests failed.</b> That is the whole hand-off.</div></div>
+      <div class="row"><time>9:00 am</time><div class="what"><span class="who k">Me</span>
+        One link: the overnight results. <b>Hundreds of E2E tests failed.</b> That is the whole hand-off.</div></div>
       <div class="row"><time>+4 min</time><div class="what"><span class="who ai">AI</span>
-        Groups all by <b>what actually went wrong</b> instead of reading them one at a time.
-        </div></div>
+        Groups all of them by <b>what actually went wrong</b> instead of reading them one at a time.</div></div>
       <div class="row"><time>+20 min</time><div class="what"><span class="who ai">AI</span>
-        Half were never broken. They failed because hundreds of tests hit the product at once.
-        <b>No fix needed, just a retry done for you automatically.</b></div></div>
-      <div class="row"><time>+25 min</time><div class="what"><span class="who k">Me</span>
-        Retry those. <b>Half pass.</b> Not a line of code written for any of them.</div></div>
-      <div class="row"><time>continues in parallel</time><div class="what"><span class="who ai">AI</span>
-        Works the remainder in parallel. Opens the product, confirms what changed, writes the fix, runs it
-        twice to prove it, lands it on the board with a one line reason.</div></div>
+        Half were never broken. They failed because hundreds of E2E tests hit the product at once.
+        <b>No fix needed; it re-runs them itself, twenty at a time.</b></div></div>
+      <div class="row"><time>+25 min</time><div class="what"><span class="who ai">AI</span>
+        The re-runs come back. <b>Half the suite is green</b> and not a line of code was written for any of it.</div></div>
+      <div class="row"><time>the next 3 hours</time><div class="what"><span class="who ai">AI</span>
+        Works the rest in parallel, twenty lanes at once. For each one it opens the product, confirms what changed,
+        writes the fix, runs it twice to prove it, and lands it on the board with a one line reason.</div></div>
       <div class="row"><time>as they land</time><div class="what"><span class="who k">Me</span>
-        Paste, run, confirm. <b>Two keystrokes and a look</b>, per test.</div></div>
+        Paste, run, confirm. <b>Two keystrokes and a look</b>, under a minute of my time per E2E test.</div></div>
+      <div class="row"><time>~1:00 pm</time><div class="what"><span class="who ai">AI</span>
+        <b>500 E2E tests fixed and signed off. The suite is green.</b> Four hours after the link was handed over,
+        the day's real work is done.
+        <span class="payoff">The client has a green suite to <strong>deploy against today, not next week</strong>. Their old
+        cadence was one release a week; a suite that heals in a morning turns that into one a day.</span></div></div>
       <div class="row"><time>end of day</time><div class="what"><span class="who ai">AI</span>
-        Automatically starts an end of day retro, which triggers self reflection (fixing mistakes and making sure they never happen again). The system is continuously improving and learning the product automatically. 
-        This makes maintaining the suite better over time, regardless of how big the test suite becomes.</div></div>
+        Runs its own retro: what it got wrong, what it learned about the product, and a check so the same mistake
+        cannot come back. The bigger the suite gets, the more that compounds.</div></div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">One core, many specializations</p>
+    <h2>The engine is the same. Only the specialization changes.</h2>
+    <p class="sub">One core holds everything that does not depend on the job. Each job adds a thin layer that says
+    what its evidence is, what "proven" means, and where the human gate sits. Whatever the work is, the AI gathers
+    the evidence, does the work and proves it. You keep the one step that is hard to undo.</p>
+    <div class="layers">
+      <div class="layer core">
+        <h3>Core</h3><span class="lb">knows no job</span>
+        <p>The one screen and RIGHT NOW, the your-move list, the ladder with evidence gates and a state only a
+        person can set, the decisions lane, the learning ledger and its self-checks, the open and close rituals.</p>
+        <span class="badge">building next: its own repo</span>
+      </div>
+      <div class="layer spec">
+        <h3>Specialization</h3><span class="lb">knows the job</span>
+        <p>What counts as evidence, what "proven" means, which tools gather the evidence, and where the human gate
+        sits. For the E2E suite: traces, videos, live DOM, two local runs plus one on the real machines.</p>
+        <span class="badge">running today: E2E suite · building next: Cartograph</span>
+      </div>
+      <div class="layer inst">
+        <h3>Instance</h3><span class="lb">knows the client</span>
+        <p>One client's names, credentials, quirks and known bugs, kept out of the two layers above so nothing
+        client-shaped leaks into the engine.</p>
+        <span class="badge">one per client or repo</span>
+      </div>
+    </div>
+    <div class="legend">
+      <b><i class="ai"></i> the AI handles it end to end</b>
+      <b><i class="me"></i> stays yours, on purpose</b>
+    </div>
+    <div class="port">
+
+      <div class="pc mine">
+        <div class="role">My E2E suite <span class="badge">running today</span></div>
+        <div class="chain2">
+          <span class="chip ai">diagnose</span><span class="arw">&rarr;</span>
+          <span class="chip ai">write the fix</span><span class="arw">&rarr;</span>
+          <span class="chip ai">prove it twice</span><span class="arw">&rarr;</span>
+          <span class="chip me">ship it</span>
+        </div>
+        <p class="gain">I read <b>two items a day</b> instead of thirty failures, and I never open a log again.</p>
+        <p class="gain payoff">The client <b>deploys daily instead of weekly</b>.</p>
+      </div>
+
+      <div class="pc">
+        <div class="role">A code review queue <span class="badge">could be next</span></div>
+        <div class="chain2">
+          <span class="chip me">open the PR</span><span class="arw">&rarr;</span>
+          <span class="chip ai">first-pass review</span><span class="arw">&rarr;</span>
+          <span class="chip ai">nits fixed, tests run</span><span class="arw">&rarr;</span>
+          <span class="chip me">approve</span>
+        </div>
+        <p class="gain">Every PR reaches you <b>already cleaned up, with the tests green</b>. You spend
+        your review on the design call, not on naming and formatting.</p>
+      </div>
+
+      <div class="pc">
+        <div class="role">An AI eval loop <span class="badge">could be next</span></div>
+        <div class="chain2">
+          <span class="chip me">change the prompt</span><span class="arw">&rarr;</span>
+          <span class="chip ai">run the evals</span><span class="arw">&rarr;</span>
+          <span class="chip ai">score and diff vs last</span><span class="arw">&rarr;</span>
+          <span class="chip me">promote</span>
+        </div>
+        <p class="gain">Nothing ships on vibes. A prompt cannot be promoted until the <b>scores are
+        recorded against that exact version</b>, and regressions surface before you look.</p>
+      </div>
+
+      <div class="pc">
+        <div class="role">A support desk <span class="badge">could be next</span></div>
+        <div class="chain2">
+          <span class="chip ai">reproduce it</span><span class="arw">&rarr;</span>
+          <span class="chip ai">find the cause</span><span class="arw">&rarr;</span>
+          <span class="chip ai">write and prove the patch</span><span class="arw">&rarr;</span>
+          <span class="chip me">release</span>
+        </div>
+        <p class="gain">Tickets land <b>already reproduced with a proven fix attached</b>. The ones that
+        turn out to be user error never reach an engineer at all.</p>
+      </div>
+
+      <div class="pc">
+        <div class="role">A hiring pipeline <span class="badge">could be next</span></div>
+        <div class="chain2">
+          <span class="chip ai">collect the work samples</span><span class="arw">&rarr;</span>
+          <span class="chip ai">draft the prep notes</span><span class="arw">&rarr;</span>
+          <span class="chip ai">chase the scheduling</span><span class="arw">&rarr;</span>
+          <span class="chip me">every judgment call</span>
+        </div>
+        <p class="gain">You walk into each conversation <b>already briefed</b>, and the admin trail chases
+        itself. No screening decision is ever made for you.</p>
+      </div>
+
+      <div class="pc plan">
+        <div class="role">Cartograph <span class="badge">building next</span></div>
+        <div class="chain2">
+          <span class="chip me">open a PR</span><span class="arw">&rarr;</span>
+          <span class="chip ai">read the change</span><span class="arw">&rarr;</span>
+          <span class="chip ai">write the review</span><span class="arw">&rarr;</span>
+          <span class="chip me">decide</span>
+        </div>
+        <p class="gain"><b>Read what your coding agent changed.</b> A pull request becomes a page a person can read,
+        every sentence pointing at its code and marked whether it was run, only read, or still needs you. It never
+        fails a build; a review is not a gate.</p>
+      </div>
+
+    </div>
+    <p style="margin-top:26px">Every row above has the human gate in a different place, because that is a
+    choice, not a limitation. Move it earlier if the work is risky, later once you trust it.
+    <strong>Cartograph is the one I am building next</strong>.</p>
   </div>
 </section>
 
